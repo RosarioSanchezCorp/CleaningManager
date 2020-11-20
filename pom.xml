@@ -12,7 +12,7 @@
     <module>ClientInspector</module>
   <module>ClientQAnalyst</module>
     <module>Commons</module>
-    <module>InspectorServices</module>
-    <module>QAnalystServices</module>
-  </modules>
+    <module>Server</module>
+    <module>ClientServices</module>
+</modules>
 </project>
