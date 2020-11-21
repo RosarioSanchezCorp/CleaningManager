@@ -5,38 +5,38 @@
  */
 package com.mycompany.daoImpl;
 
-import com.mycompany.dao.DaoInspector;
-import com.mycompany.dto.DtoInspector;
+import com.mycompany.dao.DaoForm;
+import com.mycompany.dto.DtoForm;
 import java.util.List;
 
 /**
  *
  * @author adriel
  */
-public class DaoImplInspector implements DaoInspector{
+public class DaoImplForm implements DaoForm {
 
     @Override
-    public void create(DtoInspector entity) {
+    public void create(DtoForm entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void modify(DtoInspector entity) {
+    public void modify(DtoForm entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void delete(DtoInspector entity) {
+    public void delete(DtoForm entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public DtoInspector findById(Long id) {
+    public DtoForm findById(Long id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<DtoInspector> findAll() {
+    public List<DtoForm> findAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

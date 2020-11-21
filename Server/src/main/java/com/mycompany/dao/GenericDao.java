@@ -5,10 +5,20 @@
  */
 package com.mycompany.dao;
 
+import java.util.List;
+
 /**
  *
  * @author adriel
+ * @param <T>
+ * @param <ID>
  */
-public interface GenericDao {
+public interface GenericDao<T,ID> {
     
+    public void create(T entity);
+    public void modify(T entity);
+    public void delete(T entity);
+    public T findById(ID id);
+    public List<T> findAll();
+       
 }

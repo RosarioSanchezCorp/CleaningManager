@@ -5,38 +5,38 @@
  */
 package com.mycompany.daoImpl;
 
-import com.mycompany.dao.DaoInspector;
-import com.mycompany.dto.DtoInspector;
+import com.mycompany.dao.DaoFoodTruck;
+import com.mycompany.dto.DtoFoodTruck;
 import java.util.List;
 
 /**
  *
  * @author adriel
  */
-public class DaoImplInspector implements DaoInspector{
+public class DaoImplFoodTruck implements DaoFoodTruck{
 
     @Override
-    public void create(DtoInspector entity) {
+    public void create(DtoFoodTruck entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void modify(DtoInspector entity) {
+    public void modify(DtoFoodTruck entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void delete(DtoInspector entity) {
+    public void delete(DtoFoodTruck entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public DtoInspector findById(Long id) {
+    public DtoFoodTruck findById(Long id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<DtoInspector> findAll() {
+    public List<DtoFoodTruck> findAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
