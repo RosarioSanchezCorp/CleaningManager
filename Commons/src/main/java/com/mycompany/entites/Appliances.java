@@ -50,6 +50,6 @@ public class Appliances {
         this.cleaningStatus = cleaningStatus;
     }
     
-    
+    //methods 
     
 }
