@@ -14,6 +14,7 @@ import java.util.List;
  */
 public class Inspector implements Serializable{
     
+    private static final long serialVersionUID = 1L;
     //atributes
     private Long id;
     private String name;

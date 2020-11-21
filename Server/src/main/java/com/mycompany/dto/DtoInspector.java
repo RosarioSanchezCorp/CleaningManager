@@ -12,11 +12,12 @@ import java.io.Serializable;
  * @author adriel
  */
 public class DtoInspector implements Serializable {
-    
-  private Long id;
-  private String name;
-  private String lastName;
-  private String phoneNumber;
+  
+    private static final long serialVersionUID = 1L;
+    private Long id;
+    private String name;
+    private String lastName;
+    private String phoneNumber;
 
     public DtoInspector(String name, String lastName, String phoneNumber) {
         

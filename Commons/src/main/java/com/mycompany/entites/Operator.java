@@ -13,6 +13,7 @@ import java.io.Serializable;
  */
 public class Operator implements Serializable{
     
+    private static final long serialVersionUID = 1L;
     //atributes
     private Long id;
     private String name;

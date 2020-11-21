@@ -13,6 +13,7 @@ import java.io.Serializable;
  */
 public class DtoFormAppliance implements Serializable{
     
+    private static final long serialVersionUID = 1L;
     private Long id;
     private Long idForm;
     private Long idAppliance;
