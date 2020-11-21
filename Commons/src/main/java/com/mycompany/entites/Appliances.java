@@ -13,6 +13,7 @@ import java.io.Serializable;
  */
 public class Appliances {
     
+    private static final long serialVersionUID = 1L;
     //atributes
     private Long id;
     private String name;

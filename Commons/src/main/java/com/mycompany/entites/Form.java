@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class Form implements Serializable{
     
+    private static final long serialVersionUID = 1L;
     //atributes
     private Long id;
     private Inspector inspector;
