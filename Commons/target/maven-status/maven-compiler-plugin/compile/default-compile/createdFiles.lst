@@ -1,5 +1,7 @@
+com/mycompany/entites/Inspector.class
+com/mycompany/entites/FoodTruck.class
 com/mycompany/entites/Operator.class
 com/mycompany/entites/Appliances.class
 com/mycompany/entites/Form.class
-com/mycompany/entites/Inspector.class
-com/mycompany/entites/FoodTruck.class
+com/mycompany/entites/Response.class
+com/mycompany/entites/Petition.class
