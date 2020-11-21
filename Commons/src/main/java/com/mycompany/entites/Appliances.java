@@ -50,6 +50,6 @@ public class Appliances implements Serializable{
         this.cleaningStatus = cleaningStatus;
     }
     
-    
+    //methods 
     
 }
