@@ -9,20 +9,21 @@ import java.io.Serializable;
 
 /**
  *
- * @author adriel
+ * @author alex_rosario
  */
-public class DtoInspector implements Serializable {
+public class DtoOperator implements Serializable {
     
-  private Long id;
-  private String name;
-  private String lastName;
-  private String phoneNumber;
+    private Long id;
+    private String name;
+    private String lastName;
+    private String phoneNumber;
+    private Long idTruck;
 
-    public DtoInspector(String name, String lastName, String phoneNumber) {
-        
+    public DtoOperator(String name, String lastName, String phoneNumber, Long idTruck) {
         this.name = name;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
+        this.idTruck = idTruck;
     }
 
     public Long getId() {
@@ -56,7 +57,13 @@ public class DtoInspector implements Serializable {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-  
-  
+
+    public Long getIdTruck() {
+        return idTruck;
+    }
+
+    public void setIdTruck(Long idTruck) {
+        this.idTruck = idTruck;
+    }
     
 }
