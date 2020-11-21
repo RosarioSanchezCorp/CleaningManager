@@ -70,6 +70,6 @@ public class Operator implements Serializable{
         this.foodTruck = foodTruck;
     }
     
-    
+    //methods 
     
 }
