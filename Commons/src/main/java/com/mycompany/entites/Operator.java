@@ -16,7 +16,7 @@ public class Operator implements Serializable{
     //atributes
     private Long id;
     private String name;
-    private String example;
+    private String example23;
     private String lastName;
     private String phoneNumber;
     private FoodTruck foodTruck;
