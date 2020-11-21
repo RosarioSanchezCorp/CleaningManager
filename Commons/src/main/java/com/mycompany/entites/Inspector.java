@@ -20,6 +20,15 @@ public class Inspector implements Serializable{
     private String lastName;
     private String phoneNumber;
     private List<FoodTruck> truckList;
+
+    //constructors
+    public Inspector(String name, String lastName, String phoneNumber, List<FoodTruck> truckList) {
+        this.name = name;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.truckList = truckList;
+    }
+    
     
     //getters and setters
     public Long getId() {

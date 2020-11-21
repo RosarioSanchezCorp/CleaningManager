@@ -24,6 +24,17 @@ public class Form implements Serializable{
     private Boolean cleaningStatus;
     private String description;
 
+    //contructors
+    public Form(Inspector inspector, FoodTruck foodTruck, Date inspectionTime, List<Appliances> appliancesList, Boolean cleaningStatus, String description) {
+        this.inspector = inspector;
+        this.foodTruck = foodTruck;
+        this.inspectionTime = inspectionTime;
+        this.appliancesList = appliancesList;
+        this.cleaningStatus = cleaningStatus;
+        this.description = description;
+    }
+    
+
     //getters and setters
     public Long getId() {
         return id;
