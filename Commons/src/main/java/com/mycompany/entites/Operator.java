@@ -16,7 +16,6 @@ public class Operator implements Serializable{
     //atributes
     private Long id;
     private String name;
-    private String example23;
     private String lastName;
     private String phoneNumber;
     private FoodTruck foodTruck;
@@ -37,7 +36,7 @@ public class Operator implements Serializable{
 
     public void setId(Long id) {
         
-        this.id = id + 4 ;
+        this.id = id;
 
     }
 
@@ -72,9 +71,5 @@ public class Operator implements Serializable{
     public void setFoodTruck(FoodTruck foodTruck) {
         this.foodTruck = foodTruck;
     }
-    
-    //methods 
-    
-    // hola klk
     
 }
