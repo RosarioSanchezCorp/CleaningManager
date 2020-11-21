@@ -36,7 +36,9 @@ public class Operator implements Serializable{
     }
 
     public void setId(Long id) {
+        
         this.id = id + 4 ;
+
     }
 
     public String getName() {
