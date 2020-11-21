@@ -20,6 +20,15 @@ public class Operator implements Serializable{
     private String phoneNumber;
     private FoodTruck foodTruck;
 
+    //Constuctors
+    public Operator(String name, String lastName, String phoneNumber, FoodTruck foodTruck) {
+        this.name = name;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.foodTruck = foodTruck;
+    }
+    
+
     //getters and setters
     public Long getId() {
         return id;

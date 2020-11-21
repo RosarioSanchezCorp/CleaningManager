@@ -5,10 +5,25 @@
  */
 package com.mycompany.entites;
 
+import java.io.Serializable;
+
 /**
  *
  * @author adriel
  */
-public class FoodTruck {
+public class FoodTruck implements Serializable{
+    
+    //atributes
+    private Long id;
+
+    //getters and setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     
 }

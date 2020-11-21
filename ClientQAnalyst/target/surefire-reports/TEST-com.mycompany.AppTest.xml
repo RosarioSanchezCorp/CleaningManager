@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.mycompany.AppTest" time="0.094" tests="1" errors="0" skipped="0" failures="0">
+=======
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.mycompany.AppTest" time="0.045" tests="1" errors="0" skipped="0" failures="0">
+>>>>>>> 6be8bd0b4ce3c22669c109c9582d0c1fe5da3e8f
   <properties>
     <property name="sun.desktop" value="gnome"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -17,8 +21,13 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/opt/java/jdk1.8.0_271/jre/lib/amd64"/>
+<<<<<<< HEAD
     <property name="sun.java.command" value="/home/alex_rosario/NetBeansProjects/CleaningManager/ClientQAnalyst/target/surefire/surefirebooter3011019059843708280.jar /home/alex_rosario/NetBeansProjects/CleaningManager/ClientQAnalyst/target/surefire 2020-11-20T20-59-29_814-jvmRun1 surefire3093767324587117072tmp surefire_17849780584167477503tmp"/>
     <property name="surefire.test.class.path" value="/home/alex_rosario/NetBeansProjects/CleaningManager/ClientQAnalyst/target/test-classes:/home/alex_rosario/NetBeansProjects/CleaningManager/ClientQAnalyst/target/classes:/home/alex_rosario/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/alex_rosario/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
+=======
+    <property name="sun.java.command" value="/home/adriel/NetBeansProjects/CleaningManager/ClientQAnalyst/target/surefire/surefirebooter3433980844002290399.jar /home/adriel/NetBeansProjects/CleaningManager/ClientQAnalyst/target/surefire 2020-11-20T20-37-47_625-jvmRun1 surefire4019232752937077376tmp surefire_12730901481161458686tmp"/>
+    <property name="surefire.test.class.path" value="/home/adriel/NetBeansProjects/CleaningManager/ClientQAnalyst/target/test-classes:/home/adriel/NetBeansProjects/CleaningManager/ClientQAnalyst/target/classes:/home/adriel/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/adriel/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
+>>>>>>> 6be8bd0b4ce3c22669c109c9582d0c1fe5da3e8f
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="/home/alex_rosario"/>
     <property name="user.language" value="en"/>
@@ -30,7 +39,11 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+<<<<<<< HEAD
     <property name="surefire.real.class.path" value="/home/alex_rosario/NetBeansProjects/CleaningManager/ClientQAnalyst/target/surefire/surefirebooter3011019059843708280.jar"/>
+=======
+    <property name="surefire.real.class.path" value="/home/adriel/NetBeansProjects/CleaningManager/ClientQAnalyst/target/surefire/surefirebooter3433980844002290399.jar"/>
+>>>>>>> 6be8bd0b4ce3c22669c109c9582d0c1fe5da3e8f
     <property name="sun.boot.class.path" value="/opt/java/jdk1.8.0_271/jre/lib/resources.jar:/opt/java/jdk1.8.0_271/jre/lib/rt.jar:/opt/java/jdk1.8.0_271/jre/lib/sunrsasign.jar:/opt/java/jdk1.8.0_271/jre/lib/jsse.jar:/opt/java/jdk1.8.0_271/jre/lib/jce.jar:/opt/java/jdk1.8.0_271/jre/lib/charsets.jar:/opt/java/jdk1.8.0_271/jre/lib/jfr.jar:/opt/java/jdk1.8.0_271/jre/classes"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="1.8.0_271-b09"/>
