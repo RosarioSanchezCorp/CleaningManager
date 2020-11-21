@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author alex_rosario
  */
-public class Petition <O> implements Serializable{
+public class Request <O> implements Serializable{
     
     private static final long serialVersionUID = 1L;
     private String service;
@@ -20,20 +20,20 @@ public class Petition <O> implements Serializable{
     private Long id;
     private O object;
 
-    public Petition(String service, String method, O object) {
+    public Request(String service, String method, O object) {
         this.service = service;
         this.method = method;
         this.object = object;
     }
 
-    public Petition(String service, String method, String ip, Long id) {
+    public Request(String service, String method, String ip, Long id) {
         this.service = service;
         this.method = method;
         this.ip = ip;
         this.id = id;
     }
 
-    public Petition(String service, String method, String ip) {
+    public Request(String service, String method, String ip) {
         this.service = service;
         this.method = method;
         this.ip = ip;

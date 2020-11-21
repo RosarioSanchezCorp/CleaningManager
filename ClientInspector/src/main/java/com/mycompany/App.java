@@ -1,5 +1,5 @@
 package com.mycompany;
-
+import com.mycompany.entites.*;
 /**
  * Hello world!
  *

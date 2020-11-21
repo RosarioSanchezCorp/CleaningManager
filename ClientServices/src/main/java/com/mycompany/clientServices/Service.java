@@ -5,6 +5,8 @@
  */
 package com.mycompany.clientServices;
 
+import com.mycompany.entites.*;
+
 import java.util.List;
 
 /**
@@ -18,6 +20,7 @@ public class Service <O> {
     
     public static<O> void sendObject(String service, String method, O object){
         
+        Request request = new Request(service, method, object);
         
     }
     
