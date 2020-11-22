@@ -26,7 +26,7 @@ public class Request <O> implements Serializable{
         this.object = object;
     }
 
-    public Request(String service, String method, String ip, Long id) {
+    public Request(String service, String method, Long id, String ip) {
         this.service = service;
         this.method = method;
         this.ip = ip;
