@@ -5,17 +5,18 @@
  */
 package com.mycompany.serviceImpl;
 
-import com.mycompany.entites.Form;
-import com.mycompany.service.ServiceInspector;
+import com.mycompany.entites.Registry;
+import com.mycompany.service.ServiceQAnalyst;
+import java.util.List;
 
 /**
  *
- * @author adriel
+ * @author alex_rosario
  */
-public class ServiceImplInspector implements ServiceInspector  {
+public class ServiceImplQAnalyst implements ServiceQAnalyst{
 
     @Override
-    public void createForm(Form form) {
+    public List<Registry> getRegistryList() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

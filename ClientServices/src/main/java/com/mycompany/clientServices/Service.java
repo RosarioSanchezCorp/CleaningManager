@@ -27,7 +27,7 @@ public class Service <O> extends Thread{
     public void run(){
         try{
             System.out.println("The client is runnig");
-            ServerSocket server = new ServerSocket(55557);
+            ServerSocket server = new ServerSocket(44447);
             while(true){
                 Socket socket = server.accept();
                 ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
@@ -50,7 +50,7 @@ public class Service <O> extends Thread{
         }
     }
     
-    public static<O> void sendObject(String service, String method, O object){
+    public <O> void sendObject(String service, String method, O object){
         
         Request request = new Request(service, method, object);
         try {

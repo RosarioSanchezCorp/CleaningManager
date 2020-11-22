@@ -5,10 +5,14 @@
  */
 package com.mycompany.service;
 
+import com.mycompany.entites.Form;
+
 /**
  *
- * @author adriel
+ * @author alex_rosario
  */
-public interface Service {
+public interface ServiceInspector {
+    
+    public void createForm(Form form);
     
 }
