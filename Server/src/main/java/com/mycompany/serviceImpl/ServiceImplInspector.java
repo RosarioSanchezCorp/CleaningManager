@@ -5,8 +5,10 @@
  */
 package com.mycompany.serviceImpl;
 
+import com.mycompany.entites.Appliance;
 import com.mycompany.entites.Form;
 import com.mycompany.service.ServiceInspector;
+import java.util.List;
 
 /**
  *
@@ -18,5 +20,12 @@ public class ServiceImplInspector implements ServiceInspector  {
     public void createForm(Form form) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<Appliance> getAppliances() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
     
 }

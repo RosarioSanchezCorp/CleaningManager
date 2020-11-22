@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author adriel
  */
-public class Appliances {
+public class Appliance {
     
     private static final long serialVersionUID = 1L;
     //atributes
@@ -20,7 +20,7 @@ public class Appliances {
     private Boolean cleaningStatus;
 
     //constructors
-    public Appliances(String name, Boolean cleaningStatus) {
+    public Appliance(String name, Boolean cleaningStatus) {
         this.name = name;
         this.cleaningStatus = cleaningStatus;
     }

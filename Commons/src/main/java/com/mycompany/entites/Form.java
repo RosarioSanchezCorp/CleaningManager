@@ -21,12 +21,12 @@ public class Form implements Serializable{
     private Inspector inspector;
     private FoodTruck foodTruck;
     private Date inspectionTime;
-    private List<Appliances> appliancesList;
+    private List<Appliance> appliancesList;
     private Boolean cleaningStatus;
     private String description;
 
     //contructors
-    public Form(Inspector inspector, FoodTruck foodTruck, Date inspectionTime, List<Appliances> appliancesList, Boolean cleaningStatus, String description) {
+    public Form(Inspector inspector, FoodTruck foodTruck, Date inspectionTime, List<Appliance> appliancesList, Boolean cleaningStatus, String description) {
         this.inspector = inspector;
         this.foodTruck = foodTruck;
         this.inspectionTime = inspectionTime;
@@ -69,11 +69,11 @@ public class Form implements Serializable{
         this.inspectionTime = inspectionTime;
     }
 
-    public List<Appliances> getAppliancesList() {
+    public List<Appliance> getAppliancesList() {
         return appliancesList;
     }
 
-    public void setAppliancesList(List<Appliances> appliancesList) {
+    public void setAppliancesList(List<Appliance> appliancesList) {
         this.appliancesList = appliancesList;
     }
 

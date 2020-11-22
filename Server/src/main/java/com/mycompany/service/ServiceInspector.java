@@ -5,7 +5,9 @@
  */
 package com.mycompany.service;
 
+import com.mycompany.entites.Appliance;
 import com.mycompany.entites.Form;
+import java.util.List;
 
 /**
  *
@@ -14,5 +16,6 @@ import com.mycompany.entites.Form;
 public interface ServiceInspector {
     
     public void createForm(Form form);
+    public List<Appliance> getAppliances();
     
 }
