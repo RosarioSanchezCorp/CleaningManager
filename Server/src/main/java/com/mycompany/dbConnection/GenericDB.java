@@ -5,10 +5,15 @@
  */
 package com.mycompany.dbConnection;
 
+import java.sql.Connection;
+
 /**
  *
- * @author adriel
+ * @author alex_rosario
  */
-public class DBconnection {
+public abstract class GenericDB {
     
+    public abstract void connect();
+    public abstract void close();
+    public abstract Connection getConnection();
 }

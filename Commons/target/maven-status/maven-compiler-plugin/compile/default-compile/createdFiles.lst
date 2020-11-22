@@ -1,5 +1,6 @@
 com/mycompany/entites/Inspector.class
 com/mycompany/entites/FoodTruck.class
+com/mycompany/entites/Registry.class
 com/mycompany/entites/Request.class
 com/mycompany/entites/Operator.class
 com/mycompany/entites/Appliances.class
