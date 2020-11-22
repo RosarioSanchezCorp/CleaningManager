@@ -7,6 +7,7 @@ package com.mycompany.daoImpl;
 
 import com.mycompany.dao.DaoFormAppliance;
 import com.mycompany.dto.DtoFormAppliance;
+import com.mycompany.entities.Registry;
 import java.util.List;
 
 /**
@@ -37,6 +38,11 @@ public class DaoImplFormAppliance implements DaoFormAppliance {
 
     @Override
     public List<DtoFormAppliance> findAll() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Registry> findAllRegistries() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

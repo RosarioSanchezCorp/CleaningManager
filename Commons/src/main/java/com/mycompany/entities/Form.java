@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.entites;
+package com.mycompany.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -21,16 +21,16 @@ public class Form implements Serializable{
     private Inspector inspector;
     private FoodTruck foodTruck;
     private Date inspectionTime;
-    private List<Appliance> appliancesList;
+    private List<Appliance> applianceList;
     private Boolean cleaningStatus;
     private String description;
 
     //contructors
-    public Form(Inspector inspector, FoodTruck foodTruck, Date inspectionTime, List<Appliance> appliancesList, Boolean cleaningStatus, String description) {
+    public Form(Inspector inspector, FoodTruck foodTruck, Date inspectionTime, List<Appliance> applianceList, Boolean cleaningStatus, String description) {
         this.inspector = inspector;
         this.foodTruck = foodTruck;
         this.inspectionTime = inspectionTime;
-        this.appliancesList = appliancesList;
+        this.applianceList = applianceList;
         this.cleaningStatus = cleaningStatus;
         this.description = description;
     }
@@ -69,12 +69,12 @@ public class Form implements Serializable{
         this.inspectionTime = inspectionTime;
     }
 
-    public List<Appliance> getAppliancesList() {
-        return appliancesList;
+    public List<Appliance> getApplianceList() {
+        return applianceList;
     }
 
-    public void setAppliancesList(List<Appliance> appliancesList) {
-        this.appliancesList = appliancesList;
+    public void setAppliancesList(List<Appliance> applianceList) {
+        this.applianceList = applianceList;
     }
 
     public Boolean getCleaningStatus() {

@@ -13,4 +13,6 @@ import com.mycompany.dto.DtoForm;
  */
 public interface DaoForm extends GenericDao<DtoForm,Long>{
     
+    public DtoForm findLast();
+    
 }

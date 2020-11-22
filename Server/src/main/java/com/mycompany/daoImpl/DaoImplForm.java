@@ -39,5 +39,10 @@ public class DaoImplForm implements DaoForm {
     public List<DtoForm> findAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public DtoForm findLast() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

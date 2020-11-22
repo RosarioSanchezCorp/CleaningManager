@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.entites;
+package com.mycompany.entities;
 
 import java.io.Serializable;
 
@@ -23,6 +23,11 @@ public class Appliance {
     public Appliance(String name, Boolean cleaningStatus) {
         this.name = name;
         this.cleaningStatus = cleaningStatus;
+    }
+    
+    public Appliance(Long id, String name) {
+        this.name = name;
+        this.id = id;
     }
     
     

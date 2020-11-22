@@ -5,7 +5,8 @@
  */
 package com.mycompany.clientServices;
 
-import com.mycompany.entites.*;
+import com.mycompany.entities.Response;
+import com.mycompany.entities.Request;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;

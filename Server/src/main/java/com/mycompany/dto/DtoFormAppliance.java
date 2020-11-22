@@ -17,11 +17,13 @@ public class DtoFormAppliance implements Serializable{
     private Long id;
     private Long idForm;
     private Long idAppliance;
+    private boolean cleaningStatus;
 
-    public DtoFormAppliance(Long idForm, Long idAppliance) {
+    public DtoFormAppliance(Long idForm, Long idAppliance, boolean cleaningStatus) {
         
         this.idForm = idForm;
         this.idAppliance = idAppliance;
+        this.cleaningStatus = cleaningStatus;
     }
 
     public Long getId() {
@@ -46,6 +48,14 @@ public class DtoFormAppliance implements Serializable{
 
     public void setIdAppliance(Long idAppliance) {
         this.idAppliance = idAppliance;
+    }
+
+    public boolean isCleaningStatus() {
+        return cleaningStatus;
+    }
+
+    public void setCleaningStatus(boolean cleaningStatus) {
+        this.cleaningStatus = cleaningStatus;
     }
     
     

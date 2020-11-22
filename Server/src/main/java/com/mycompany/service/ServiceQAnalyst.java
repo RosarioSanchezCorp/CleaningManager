@@ -5,7 +5,7 @@
  */
 package com.mycompany.service;
 
-import com.mycompany.entites.Registry;
+import com.mycompany.entities.Registry;
 import java.util.List;
 
 /**

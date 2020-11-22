@@ -5,7 +5,10 @@
  */
 package com.mycompany.serviceImpl;
 
-import com.mycompany.entites.Registry;
+import com.mycompany.dao.ApplicationContext;
+import com.mycompany.dao.DaoEnum;
+import com.mycompany.dao.DaoFormAppliance;
+import com.mycompany.entities.Registry;
 import com.mycompany.service.ServiceQAnalyst;
 import java.util.List;
 
@@ -14,10 +17,12 @@ import java.util.List;
  * @author alex_rosario
  */
 public class ServiceImplQAnalyst implements ServiceQAnalyst{
-
+    
+    private DaoFormAppliance daoFormAppliance = (DaoFormAppliance) ApplicationContext.getDao(DaoEnum.DAO_FORM_APPLIANCE);
+    
     @Override
     public List<Registry> getRegistryList() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return daoFormAppliance.findAllRegistries();
     }
     
 }

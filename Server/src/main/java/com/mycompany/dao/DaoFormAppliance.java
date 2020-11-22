@@ -6,6 +6,8 @@
 package com.mycompany.dao;
 
 import com.mycompany.dto.DtoFormAppliance;
+import com.mycompany.entities.Registry;
+import java.util.List;
 
 /**
  *
@@ -13,4 +15,5 @@ import com.mycompany.dto.DtoFormAppliance;
  */
 public interface DaoFormAppliance extends GenericDao<DtoFormAppliance,Long>{
     
+    public List<Registry> findAllRegistries();
 }

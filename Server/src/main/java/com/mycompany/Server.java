@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package com.mycompany;
-import com.mycompany.entites.*;
+import com.mycompany.entities.Form;
+import com.mycompany.entities.Request;
+import com.mycompany.entities.Response;
 import com.mycompany.service.ServiceInspector;
 import com.mycompany.service.ServiceQAnalyst;
 import com.mycompany.serviceImpl.ServiceImplInspector;
@@ -34,21 +36,38 @@ public class Server extends Thread {
                 
                 switch(request.getService()){
                     case "serviceQAnalyst":
-                        try{
-                            Socket socketForClient = new Socket(request.getIp(), 44447);
-                            ObjectOutputStream out = new ObjectOutputStream(socketForClient.getOutputStream());
-                            Response response = new Response(serviceQAnalyst.getRegistryList(), "list");
-                            out.writeObject(response);
-                            out.close();
-                            socketForClient.close();
-                        }
-                        catch(Exception e){
-                            e.printStackTrace();
+                        if(request.getMethod().equalsIgnoreCase("getRegistryList")){
+                            try{
+                                Socket socketForClient = new Socket(request.getIp(), 44447);
+                                ObjectOutputStream out = new ObjectOutputStream(socketForClient.getOutputStream());
+                                Response response = new Response(serviceQAnalyst.getRegistryList(), "list");
+                                out.writeObject(response);
+                                out.close();
+                                socketForClient.close();
+                            }
+                            catch(Exception e){
+                                e.printStackTrace();
+                            }
                         }
                         break;
                     
                     case "serviceInspector":
-                        serviceInspector.createForm((Form) request.getObject());
+                        if(request.getMethod().equalsIgnoreCase("createForm")){
+                            serviceInspector.createForm((Form) request.getObject());
+                        }
+                        else if(request.getMethod().equalsIgnoreCase("getApplianceList")){
+                            try{
+                                Socket socketForClient = new Socket(request.getIp(), 44447);
+                                ObjectOutputStream out = new ObjectOutputStream(socketForClient.getOutputStream());
+                                Response response = new Response(serviceInspector.getApplianceList(), "list");
+                                out.writeObject(response);
+                                out.close();
+                                socketForClient.close();
+                            }
+                            catch(Exception e){
+                                e.printStackTrace();
+                            }
+                        }
                         break;
                         
                     default:

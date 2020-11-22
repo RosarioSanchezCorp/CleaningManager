@@ -16,12 +16,11 @@ public class DtoAppliance implements Serializable{
     private static final long serialVersionUID = 1L;
     private Long id;
     private String name;
-    private boolean cleaningStatus;
+    
 
-    public DtoAppliance(String name, boolean cleaningStatus) {
+    public DtoAppliance(String name) {
         
         this.name = name;
-        this.cleaningStatus = cleaningStatus;
     }
 
     public Long getId() {
@@ -38,16 +37,5 @@ public class DtoAppliance implements Serializable{
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public boolean isCleaningStatus() {
-        return cleaningStatus;
-    }
-
-    public void setCleaningStatus(boolean cleaningStatus) {
-        this.cleaningStatus = cleaningStatus;
-    }
-    
-    
-    
+    }    
 }
