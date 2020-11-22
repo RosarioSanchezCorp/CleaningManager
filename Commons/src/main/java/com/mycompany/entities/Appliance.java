@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author adriel
  */
-public class Appliance {
+public class Appliance implements Serializable {
     
     private static final long serialVersionUID = 1L;
     //atributes

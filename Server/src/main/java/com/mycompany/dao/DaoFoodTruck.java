@@ -6,6 +6,7 @@
 package com.mycompany.dao;
 
 import com.mycompany.dto.DtoFoodTruck;
+import java.util.List;
 
 /**
  *
@@ -13,4 +14,5 @@ import com.mycompany.dto.DtoFoodTruck;
  */
 public interface DaoFoodTruck extends GenericDao<DtoFoodTruck,Long> {
     
+    public List<DtoFoodTruck> findAllFrom(Long idInspector);
 }

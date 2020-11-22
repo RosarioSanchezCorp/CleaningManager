@@ -6,7 +6,9 @@
 package com.mycompany.service;
 
 import com.mycompany.entities.Appliance;
+import com.mycompany.entities.FoodTruck;
 import com.mycompany.entities.Form;
+import com.mycompany.entities.Inspector;
 import java.util.List;
 
 /**
@@ -17,5 +19,7 @@ public interface ServiceInspector {
     
     public void createForm(Form form);
     public List<Appliance> getApplianceList();
+    public List<Inspector> getInspectorList();
+    public List<FoodTruck> getFoodTruckList();
     
 }

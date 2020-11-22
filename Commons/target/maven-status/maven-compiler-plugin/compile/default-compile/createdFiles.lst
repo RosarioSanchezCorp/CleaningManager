@@ -1,8 +1,8 @@
-com/mycompany/entites/Inspector.class
-com/mycompany/entites/Appliance.class
-com/mycompany/entites/FoodTruck.class
-com/mycompany/entites/Registry.class
-com/mycompany/entites/Request.class
-com/mycompany/entites/Operator.class
-com/mycompany/entites/Form.class
-com/mycompany/entites/Response.class
+com/mycompany/entities/Appliance.class
+com/mycompany/entities/Inspector.class
+com/mycompany/entities/Request.class
+com/mycompany/entities/Response.class
+com/mycompany/entities/Operator.class
+com/mycompany/entities/Registry.class
+com/mycompany/entities/FoodTruck.class
+com/mycompany/entities/Form.class

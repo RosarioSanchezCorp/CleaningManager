@@ -29,6 +29,7 @@ public class Server extends Thread {
         try{
             
             ServerSocket server = new ServerSocket(44444);
+            System.out.println("The server is runnig");
             while(true){
                 Socket socket = server.accept();
                 ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
@@ -54,12 +55,39 @@ public class Server extends Thread {
                     case "serviceInspector":
                         if(request.getMethod().equalsIgnoreCase("createForm")){
                             serviceInspector.createForm((Form) request.getObject());
+                            System.out.println("The service was consumed succesfully!");
                         }
                         else if(request.getMethod().equalsIgnoreCase("getApplianceList")){
                             try{
                                 Socket socketForClient = new Socket(request.getIp(), 44447);
                                 ObjectOutputStream out = new ObjectOutputStream(socketForClient.getOutputStream());
                                 Response response = new Response(serviceInspector.getApplianceList(), "list");
+                                out.writeObject(response);
+                                out.close();
+                                socketForClient.close();
+                            }
+                            catch(Exception e){
+                                e.printStackTrace();
+                            }
+                        }
+                        else if(request.getMethod().equalsIgnoreCase("getInspectorList")){
+                            try{
+                                Socket socketForClient = new Socket(request.getIp(), 44447);
+                                ObjectOutputStream out = new ObjectOutputStream(socketForClient.getOutputStream());
+                                Response response = new Response(serviceInspector.getInspectorList(), "list");
+                                out.writeObject(response);
+                                out.close();
+                                socketForClient.close();
+                            }
+                            catch(Exception e){
+                                e.printStackTrace();
+                            }
+                        }
+                        else if(request.getMethod().equalsIgnoreCase("getFoodTruckList")){
+                            try{
+                                Socket socketForClient = new Socket(request.getIp(), 44447);
+                                ObjectOutputStream out = new ObjectOutputStream(socketForClient.getOutputStream());
+                                Response response = new Response(serviceInspector.getFoodTruckList(), "list");
                                 out.writeObject(response);
                                 out.close();
                                 socketForClient.close();

@@ -29,6 +29,16 @@ public class Inspector implements Serializable{
         this.phoneNumber = phoneNumber;
         this.truckList = truckList;
     }
+
+    public Inspector(Long id, String name, String lastName, String phoneNumber, List<FoodTruck> truckList) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.truckList = truckList;
+    }
+    
+    
     
     
     //getters and setters

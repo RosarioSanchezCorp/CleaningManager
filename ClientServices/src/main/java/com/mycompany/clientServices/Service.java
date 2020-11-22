@@ -56,7 +56,7 @@ public class Service <O> extends Thread{
         Request request = new Request(service, method, object);
         try {
             
-            Socket socket = new Socket("10.0.0.6" , 55555);
+            Socket socket = new Socket("10.0.0.6" , 44444);
             ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
             out.writeObject(request);
             out.close();
@@ -84,7 +84,7 @@ public class Service <O> extends Thread{
         
         try {
             
-            Socket socket = new Socket("10.0.0.6" , 55555);
+            Socket socket = new Socket("10.0.0.6" , 44444);
             ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
             out.writeObject(request);
             out.close();
@@ -120,7 +120,7 @@ public class Service <O> extends Thread{
         Request request = new Request(service, method, inetAddress.getHostAddress());
         try {
             
-            Socket socket = new Socket("10.0.0.6" , 55555);
+            Socket socket = new Socket("10.0.0.6" , 44444);
             ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
             out.writeObject(request);
             out.close();

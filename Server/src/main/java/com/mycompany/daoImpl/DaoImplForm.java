@@ -7,6 +7,7 @@ package com.mycompany.daoImpl;
 
 import com.mycompany.dao.DaoForm;
 import com.mycompany.dto.DtoForm;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,10 +15,12 @@ import java.util.List;
  * @author adriel
  */
 public class DaoImplForm implements DaoForm {
-
+    
+    private List<DtoForm> formDB = new ArrayList<>();
+    
     @Override
     public void create(DtoForm entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        formDB.add(entity);
     }
 
     @Override
@@ -42,7 +45,7 @@ public class DaoImplForm implements DaoForm {
 
     @Override
     public DtoForm findLast() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return formDB.get(formDB.size() - 1);
     }
     
 }

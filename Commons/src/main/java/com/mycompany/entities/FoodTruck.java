@@ -17,6 +17,10 @@ public class FoodTruck implements Serializable{
     //atributes
     private Long id;
 
+    public FoodTruck(Long id) {
+        this.id = id;
+    }
+    
     //getters and setters
     public Long getId() {
         return id;
