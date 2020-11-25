@@ -1,6 +1,9 @@
 /home/alex_rosario/NetBeansProjects/CleaningManager/Commons/src/main/java/com/mycompany/entities/Response.java
+/home/alex_rosario/NetBeansProjects/CleaningManager/Commons/src/main/java/com/mycompany/enums/Method.java
 /home/alex_rosario/NetBeansProjects/CleaningManager/Commons/src/main/java/com/mycompany/entities/Request.java
+/home/alex_rosario/NetBeansProjects/CleaningManager/Commons/src/main/java/com/mycompany/enums/Service.java
 /home/alex_rosario/NetBeansProjects/CleaningManager/Commons/src/main/java/com/mycompany/entities/FoodTruck.java
+/home/alex_rosario/NetBeansProjects/CleaningManager/Commons/src/main/java/com/mycompany/enums/ResponseType.java
 /home/alex_rosario/NetBeansProjects/CleaningManager/Commons/src/main/java/com/mycompany/entities/Appliance.java
 /home/alex_rosario/NetBeansProjects/CleaningManager/Commons/src/main/java/com/mycompany/entities/Registry.java
 /home/alex_rosario/NetBeansProjects/CleaningManager/Commons/src/main/java/com/mycompany/entities/Form.java

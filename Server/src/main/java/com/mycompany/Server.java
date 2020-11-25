@@ -7,6 +7,9 @@ package com.mycompany;
 import com.mycompany.entities.Form;
 import com.mycompany.entities.Request;
 import com.mycompany.entities.Response;
+import com.mycompany.enums.Method;
+import static com.mycompany.enums.Method.GET_REGISTRY_LIST;
+import com.mycompany.enums.ResponseType;
 import com.mycompany.service.ServiceInspector;
 import com.mycompany.service.ServiceQAnalyst;
 import com.mycompany.serviceImpl.ServiceImplInspector;
@@ -36,12 +39,12 @@ public class Server extends Thread {
                 Request request = (Request) in.readObject();
                 
                 switch(request.getService()){
-                    case "serviceQAnalyst":
-                        if(request.getMethod().equalsIgnoreCase("getRegistryList")){
+                    case QANALYST:
+                        if(request.getMethod() == Method.GET_REGISTRY_LIST){
                             try{
                                 Socket socketForClient = new Socket(request.getIp(), 44447);
                                 ObjectOutputStream out = new ObjectOutputStream(socketForClient.getOutputStream());
-                                Response response = new Response(serviceQAnalyst.getRegistryList(), "list");
+                                Response response = new Response(serviceQAnalyst.getRegistryList(), ResponseType.LIST);
                                 out.writeObject(response);
                                 out.close();
                                 socketForClient.close();
@@ -52,16 +55,16 @@ public class Server extends Thread {
                         }
                         break;
                     
-                    case "serviceInspector":
-                        if(request.getMethod().equalsIgnoreCase("createForm")){
+                    case INSPECTOR:
+                        if(request.getMethod() == Method.CREATE_FORM){
                             serviceInspector.createForm((Form) request.getObject());
                             System.out.println("The service was consumed succesfully!");
                         }
-                        else if(request.getMethod().equalsIgnoreCase("getApplianceList")){
+                        else if(request.getMethod() == Method.GET_APPLIANCE_LIST){
                             try{
                                 Socket socketForClient = new Socket(request.getIp(), 44447);
                                 ObjectOutputStream out = new ObjectOutputStream(socketForClient.getOutputStream());
-                                Response response = new Response(serviceInspector.getApplianceList(), "list");
+                                Response response = new Response(serviceInspector.getApplianceList(), ResponseType.LIST);
                                 out.writeObject(response);
                                 out.close();
                                 socketForClient.close();
@@ -70,11 +73,11 @@ public class Server extends Thread {
                                 e.printStackTrace();
                             }
                         }
-                        else if(request.getMethod().equalsIgnoreCase("getInspectorList")){
+                        else if(request.getMethod() == Method.GET_INSPECTOR_LIST){
                             try{
                                 Socket socketForClient = new Socket(request.getIp(), 44447);
                                 ObjectOutputStream out = new ObjectOutputStream(socketForClient.getOutputStream());
-                                Response response = new Response(serviceInspector.getInspectorList(), "list");
+                                Response response = new Response(serviceInspector.getInspectorList(), ResponseType.LIST);
                                 out.writeObject(response);
                                 out.close();
                                 socketForClient.close();
@@ -83,11 +86,11 @@ public class Server extends Thread {
                                 e.printStackTrace();
                             }
                         }
-                        else if(request.getMethod().equalsIgnoreCase("getFoodTruckList")){
+                        else if(request.getMethod() == Method.GET_FOODTRUCK_LIST){
                             try{
                                 Socket socketForClient = new Socket(request.getIp(), 44447);
                                 ObjectOutputStream out = new ObjectOutputStream(socketForClient.getOutputStream());
-                                Response response = new Response(serviceInspector.getFoodTruckList(), "list");
+                                Response response = new Response(serviceInspector.getFoodTruckList(), ResponseType.LIST);
                                 out.writeObject(response);
                                 out.close();
                                 socketForClient.close();

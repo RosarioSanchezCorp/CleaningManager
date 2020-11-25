@@ -3,6 +3,9 @@ com/mycompany/entities/Inspector.class
 com/mycompany/entities/Request.class
 com/mycompany/entities/Response.class
 com/mycompany/entities/Operator.class
+com/mycompany/enums/Service.class
 com/mycompany/entities/Registry.class
+com/mycompany/enums/Method.class
 com/mycompany/entities/FoodTruck.class
 com/mycompany/entities/Form.class
+com/mycompany/enums/ResponseType.class

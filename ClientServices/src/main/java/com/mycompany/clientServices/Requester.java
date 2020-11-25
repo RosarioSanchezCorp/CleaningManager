@@ -7,6 +7,8 @@ package com.mycompany.clientServices;
 
 import com.mycompany.entities.Response;
 import com.mycompany.entities.Request;
+import com.mycompany.enums.Method;
+import com.mycompany.enums.Service;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
@@ -19,7 +21,7 @@ import java.util.List;
  *
  * @author alex_rosario
  */
-public class Service <O> extends Thread{
+public class Requester <O> extends Thread{
     
     private O object;
     private List<O> objectList;
@@ -35,10 +37,10 @@ public class Service <O> extends Thread{
                 Response response = (Response) in.readObject();
                 
                 switch(response.getType()){
-                    case "object":
+                    case OBJECT:
                         this.object = (O) response.getObject();
                         break;
-                    case "list":
+                    case LIST:
                         this.objectList = response.getObjectList();
                         break;
                 }
@@ -51,7 +53,7 @@ public class Service <O> extends Thread{
         }
     }
     
-    public <O> void sendObject(String service, String method, O object){
+    public <O> void sendObject(Service service, Method method, O object){
         
         Request request = new Request(service, method, object);
         try {
@@ -69,7 +71,7 @@ public class Service <O> extends Thread{
         }       
     }
     
-    public O getObject(String service, String method, Long id){
+    public O getObject(Service service, Method method, Long id){
         
         InetAddress inetAddress = null;
         
@@ -106,7 +108,7 @@ public class Service <O> extends Thread{
         return this.object;
     }
     
-    public List<O> getObjectList(String service, String method){
+    public List<O> getObjectList(Service service, Method method){
         
         InetAddress inetAddress = null;
         

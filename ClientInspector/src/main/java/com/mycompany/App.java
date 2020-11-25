@@ -1,10 +1,12 @@
 package com.mycompany;
 
-import com.mycompany.clientServices.Service;
+import com.mycompany.clientServices.Requester;
 import com.mycompany.entities.Appliance;
 import com.mycompany.entities.FoodTruck;
 import com.mycompany.entities.Form;
 import com.mycompany.entities.Inspector;
+import com.mycompany.enums.Method;
+import com.mycompany.enums.Service;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
@@ -13,13 +15,13 @@ public class App
 {
     public static void main( String[] args )
     {
-        Service service = new Service();
-        service.start();
-        List<Inspector> inspectorList = service.getObjectList("serviceInspector", "getInspectorList");
-        List<FoodTruck> foodTruckList = service.getObjectList("serviceInspector", "getFoodTruckList");
+        Requester requester = new Requester();
+        requester.start();
+        List<Inspector> inspectorList = requester.getObjectList(Service.INSPECTOR, Method.GET_INSPECTOR_LIST);
+        List<FoodTruck> foodTruckList = requester.getObjectList(Service.INSPECTOR, Method.GET_FOODTRUCK_LIST);
         LocalDate time = LocalDate.now();
         Date inspectionTime = java.sql.Date.valueOf(time);
-        List<Appliance> applianceList = service.getObjectList("serviceInspector", "getApplianceList");
+        List<Appliance> applianceList = requester.getObjectList(Service.INSPECTOR, Method.GET_APPLIANCE_LIST);
         applianceList.get(0).setCleaningStatus(true);
         applianceList.get(1).setCleaningStatus(false);
         applianceList.get(2).setCleaningStatus(true);
@@ -36,7 +38,7 @@ public class App
             System.out.println(a.getId()+" "+a.getName()+" "+a.getCleaningStatus());
         }
         Form form = new Form(inspectorList.get(0), foodTruckList.get(0), inspectionTime, applianceList, cleaningStatus, description);
-        service.sendObject("serviceInspector", "createForm", form);
+        requester.sendObject(Service.INSPECTOR, Method.CREATE_FORM, form);
      
     }
 }

@@ -5,6 +5,7 @@
  */
 package com.mycompany.entities;
 
+import com.mycompany.enums.ResponseType;
 import java.io.Serializable;
 import java.util.List;
 
@@ -17,14 +18,14 @@ public class Response <O> implements Serializable {
     private static final long serialVersionUID = 1L;
     private O object;
     private List<O> objectList;
-    private String type;
+    private ResponseType type;
 
-    public Response(O object, String type) {
+    public Response(O object, ResponseType type) {
         this.object = object;
         this.type = type;
     }
 
-    public Response(List<O> objectList, String type) {
+    public Response(List<O> objectList, ResponseType type) {
         this.objectList = objectList;
         this.type = type;
     }
@@ -37,7 +38,7 @@ public class Response <O> implements Serializable {
         return objectList;
     }
 
-    public String getType() {
+    public ResponseType getType() {
         return type;
     }
     

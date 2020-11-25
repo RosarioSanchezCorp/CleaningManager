@@ -5,6 +5,8 @@
  */
 package com.mycompany.entities;
 
+import com.mycompany.enums.Method;
+import com.mycompany.enums.Service;
 import java.io.Serializable;
 
 /**
@@ -14,36 +16,36 @@ import java.io.Serializable;
 public class Request <O> implements Serializable{
     
     private static final long serialVersionUID = 1L;
-    private String service;
-    private String method;
+    private Service service;
+    private Method method;
     private String ip;
     private Long id;
     private O object;
 
-    public Request(String service, String method, O object) {
+    public Request(Service service, Method method, O object) {
         this.service = service;
         this.method = method;
         this.object = object;
     }
 
-    public Request(String service, String method, Long id, String ip) {
+    public Request(Service service, Method method, Long id, String ip) {
         this.service = service;
         this.method = method;
         this.ip = ip;
         this.id = id;
     }
 
-    public Request(String service, String method, String ip) {
+    public Request(Service service, Method method, String ip) {
         this.service = service;
         this.method = method;
         this.ip = ip;
     }
 
-    public String getService() {
+    public Service getService() {
         return service;
     }
 
-    public String getMethod() {
+    public Method getMethod() {
         return method;
     }
 
