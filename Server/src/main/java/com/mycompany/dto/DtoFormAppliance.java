@@ -50,7 +50,7 @@ public class DtoFormAppliance implements Serializable{
         this.idAppliance = idAppliance;
     }
 
-    public boolean isCleaningStatus() {
+    public boolean getCleaningStatus() {
         return cleaningStatus;
     }
 

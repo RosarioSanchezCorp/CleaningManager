@@ -7,6 +7,7 @@ package com.mycompany.dto;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
@@ -18,16 +19,20 @@ public class DtoForm implements Serializable{
     private Long id;
     private Long idInspector;
     private Long idTruck;
-    private Date inspectionTime;
+    private Timestamp inspectionTime;
     private boolean cleaningStatus;
     private String description;
 
-    public DtoForm(Long idInspector, Long idTruck, Date inspectionTime, boolean cleaningStatus, String description) {
+    public DtoForm(Long idInspector, Long idTruck, Timestamp inspectionTime, boolean cleaningStatus, String description) {
         this.idInspector = idInspector;
         this.idTruck = idTruck;
         this.inspectionTime = inspectionTime;
         this.cleaningStatus = cleaningStatus;
         this.description = description;
+    }
+
+    public DtoForm() {
+        
     }
 
     public Long getId() {
@@ -54,15 +59,15 @@ public class DtoForm implements Serializable{
         this.idTruck = idTruck;
     }
 
-    public Date getInspectionTime() {
+    public Timestamp getInspectionTime() {
         return inspectionTime;
     }
 
-    public void setInspectionTime(Date inspectionTime) {
+    public void setInspectionTime(Timestamp inspectionTime) {
         this.inspectionTime = inspectionTime;
     }
 
-    public boolean isCleaningStatus() {
+    public boolean getCleaningStatus() {
         return cleaningStatus;
     }
 

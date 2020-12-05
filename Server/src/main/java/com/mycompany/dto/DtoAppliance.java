@@ -23,6 +23,10 @@ public class DtoAppliance implements Serializable{
         this.name = name;
     }
 
+    public DtoAppliance() {
+        
+    }
+
     public Long getId() {
         return id;
     }

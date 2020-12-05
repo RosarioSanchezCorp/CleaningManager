@@ -15,9 +15,9 @@ public class App
 {
     public static void main( String[] args )
     {
-        Requester requester = new Requester();
+        Requester requester = Requester.getRequester();
         requester.start();
-        List<Inspector> inspectorList = requester.getObjectList(Service.INSPECTOR, Method.GET_INSPECTOR_LIST);
+        /*List<Inspector> inspectorList = requester.getObjectList(Service.INSPECTOR, Method.GET_INSPECTOR_LIST);
         List<FoodTruck> foodTruckList = requester.getObjectList(Service.INSPECTOR, Method.GET_FOODTRUCK_LIST);
         LocalDate time = LocalDate.now();
         Date inspectionTime = java.sql.Date.valueOf(time);
@@ -39,6 +39,28 @@ public class App
         }
         Form form = new Form(inspectorList.get(0), foodTruckList.get(0), inspectionTime, applianceList, cleaningStatus, description);
         requester.sendObject(Service.INSPECTOR, Method.CREATE_FORM, form);
-     
+        */
+        
+        List<Appliance> applianceList = requester.getObjectList(Service.INSPECTOR, Method.GET_APPLIANCE_LIST);
+        for(Appliance a: applianceList){
+            System.out.println(a.getId()+" "+a.getName());
+        }
+        
+        List<FoodTruck> foodTruckList = requester.getObjectList(Service.INSPECTOR, Method.GET_FOODTRUCK_LIST);
+        for(FoodTruck f: foodTruckList){
+            System.out.println(f.getId());
+        }
+        
+        List<Inspector> inspectorList = requester.getObjectList(Service.INSPECTOR, Method.GET_INSPECTOR_LIST);
+        for(Inspector i: inspectorList){
+            System.out.println(i.getId()+" "+i.getName()+" "+i.getLastName()+" "+i.getPhoneNumber());
+            System.out.println("List of foodtrucks:");
+            for(FoodTruck ft: i.getTruckList()){
+                System.out.println("Foodtruck: "+ft.getId());
+            }
+        }
+        
+        
+        
     }
 }

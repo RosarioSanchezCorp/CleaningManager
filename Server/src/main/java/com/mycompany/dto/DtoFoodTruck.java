@@ -21,6 +21,10 @@ public class DtoFoodTruck implements Serializable{
         this.idInspector = idInspector;
     }
 
+    public DtoFoodTruck() {
+        
+    }
+
     public Long getId() {
         return id;
     }

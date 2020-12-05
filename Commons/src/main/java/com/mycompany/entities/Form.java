@@ -7,6 +7,7 @@ package com.mycompany.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -20,13 +21,13 @@ public class Form implements Serializable{
     private Long id;
     private Inspector inspector;
     private FoodTruck foodTruck;
-    private Date inspectionTime;
+    private Timestamp inspectionTime;
     private List<Appliance> applianceList;
     private Boolean cleaningStatus;
     private String description;
 
     //contructors
-    public Form(Inspector inspector, FoodTruck foodTruck, Date inspectionTime, List<Appliance> applianceList, Boolean cleaningStatus, String description) {
+    public Form(Inspector inspector, FoodTruck foodTruck, Timestamp inspectionTime, List<Appliance> applianceList, Boolean cleaningStatus, String description) {
         this.inspector = inspector;
         this.foodTruck = foodTruck;
         this.inspectionTime = inspectionTime;
@@ -61,11 +62,11 @@ public class Form implements Serializable{
         this.foodTruck = foodTruck;
     }
 
-    public Date getInspectionTime() {
+    public Timestamp getInspectionTime() {
         return inspectionTime;
     }
 
-    public void setInspectionTime(Date inspectionTime) {
+    public void setInspectionTime(Timestamp inspectionTime) {
         this.inspectionTime = inspectionTime;
     }
 

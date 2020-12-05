@@ -6,7 +6,12 @@
 package com.mycompany.daoImpl;
 
 import com.mycompany.dao.DaoFoodTruck;
+import com.mycompany.dbConnection.FactoryDB;
+import com.mycompany.dbConnection.GenericDB;
+import com.mycompany.dbConnection.TypeDB;
 import com.mycompany.dto.DtoFoodTruck;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,15 +21,9 @@ import java.util.List;
  */
 public class DaoImplFoodTruck implements DaoFoodTruck{
     
-    private List<DtoFoodTruck> foodTruckDB = new ArrayList<>();
+    private GenericDB db = FactoryDB.getDataBase(TypeDB.MYSQL);
+    private List<DtoFoodTruck> foodtruckList = new ArrayList<>();
     
-    //THIS IS JUST FOR TESTING
-    public DaoImplFoodTruck(){
-        DtoFoodTruck foodTruck1 = new DtoFoodTruck(1L);foodTruck1.setId(1L);
-        DtoFoodTruck foodTruck2 = new DtoFoodTruck(2L);foodTruck2.setId(2L);
-        foodTruckDB.add(foodTruck1);
-        foodTruckDB.add(foodTruck2);
-    }
     
     @Override
     public void create(DtoFoodTruck entity) {
@@ -48,18 +47,54 @@ public class DaoImplFoodTruck implements DaoFoodTruck{
 
     @Override
     public List<DtoFoodTruck> findAll() {
-        return foodTruckDB;
+        this.foodtruckList.clear();
+        try{
+            db.connect();
+            PreparedStatement pst = db.getConnection().prepareStatement("SELECT * FROM TEST_FOODTRUCK");
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                DtoFoodTruck ft = new DtoFoodTruck();
+                ft.setId(rs.getLong("id_foodtruck"));
+                ft.setIdInspector(rs.getLong("id_inspector"));
+                foodtruckList.add(ft);
+            }
+            rs.close();
+            pst.close();
+            
+        }
+        catch(Exception  e){
+            e.printStackTrace();
+        }
+        finally{
+            db.close();
+            return foodtruckList;
+        }  
     }
 
     @Override
     public List<DtoFoodTruck> findAllFrom(Long idInspector) {
         List<DtoFoodTruck> listForInspector = new ArrayList<>();
-        for(DtoFoodTruck dtoFoodTruck: foodTruckDB){
-            if(dtoFoodTruck.getId() == idInspector){
-                listForInspector.add(dtoFoodTruck);
+        try{
+            db.connect();
+            PreparedStatement pst = db.getConnection().prepareStatement("SELECT * FROM TEST_FOODTRUCK WHERE ID_INSPECTOR = ?");
+            pst.setLong(1, idInspector);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                DtoFoodTruck ft = new DtoFoodTruck();
+                ft.setId(rs.getLong("id_foodtruck"));
+                ft.setIdInspector(rs.getLong("id_inspector"));
+                listForInspector.add(ft);
             }
+            rs.close();
+            pst.close();
         }
-        return listForInspector;
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally{
+            db.close();
+            return listForInspector;
+        }
     }
     
 }

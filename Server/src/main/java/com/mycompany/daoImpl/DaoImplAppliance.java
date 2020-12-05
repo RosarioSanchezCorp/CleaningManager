@@ -6,7 +6,12 @@
 package com.mycompany.daoImpl;
 
 import com.mycompany.dao.DaoAppliance;
+import com.mycompany.dbConnection.FactoryDB;
+import com.mycompany.dbConnection.GenericDB;
+import com.mycompany.dbConnection.TypeDB;
 import com.mycompany.dto.DtoAppliance;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,17 +21,9 @@ import java.util.List;
  */
 public class DaoImplAppliance implements DaoAppliance{
     
-    private List<DtoAppliance> applianceDB = new ArrayList<>();
     
-    //THIS IS JUST FOR TESTING
-    public DaoImplAppliance(){
-        DtoAppliance ap1 = new DtoAppliance("Stove");ap1.setId(1L);
-        DtoAppliance ap2 = new DtoAppliance("toaster");ap2.setId(2L);
-        DtoAppliance ap3 = new DtoAppliance("fan");ap3.setId(3L);
-        applianceDB.add(ap1);
-        applianceDB.add(ap2);
-        applianceDB.add(ap3);
-    }
+    private GenericDB db = FactoryDB.getDataBase(TypeDB.MYSQL);
+    private List<DtoAppliance> applianceList = new ArrayList<>();
     
     @Override
     public void create(DtoAppliance entity) {
@@ -50,7 +47,26 @@ public class DaoImplAppliance implements DaoAppliance{
 
     @Override
     public List<DtoAppliance> findAll() {
-        return applianceDB;
-    }
-    
+        this.applianceList.clear();
+        try{
+            db.connect();
+            PreparedStatement pst = db.getConnection().prepareStatement("SELECT * FROM TEST_APPLIANCE");
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                DtoAppliance a = new DtoAppliance();
+                a.setId(rs.getLong("id_appliance"));
+                a.setName(rs.getString("name"));
+                applianceList.add(a);
+            }
+            rs.close();
+            pst.close();          
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally{
+           db.close();
+           return this.applianceList; 
+        }    
+    }  
 }

@@ -6,8 +6,12 @@
 package com.mycompany.daoImpl;
 
 import com.mycompany.dao.DaoFormAppliance;
+import com.mycompany.dbConnection.FactoryDB;
+import com.mycompany.dbConnection.GenericDB;
+import com.mycompany.dbConnection.TypeDB;
 import com.mycompany.dto.DtoFormAppliance;
 import com.mycompany.entities.Registry;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,11 +21,26 @@ import java.util.List;
  */
 public class DaoImplFormAppliance implements DaoFormAppliance {
     
-    private List<DtoFormAppliance> formApplianceDB = new ArrayList<>();
+    private GenericDB db = FactoryDB.getDataBase(TypeDB.MYSQL);
+    private List<DtoFormAppliance> formApplianceList = new ArrayList<>();
 
     @Override
     public void create(DtoFormAppliance entity) {
-        formApplianceDB.add(entity);
+        try{
+            db.connect();
+            PreparedStatement pst = db.getConnection().prepareStatement("INSERT INTO TEST_FORM_APPLIANCE(ID_FORM, ID_APPLIANCE, CLEANING_STATUS) VALUES(?,?,?)");
+            pst.setLong(1, entity.getIdForm());
+            pst.setLong(2, entity.getIdAppliance());
+            pst.setBoolean(3, entity.getCleaningStatus());
+            pst.executeUpdate();
+            pst.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally{
+            db.close();
+        }
     }
 
     @Override

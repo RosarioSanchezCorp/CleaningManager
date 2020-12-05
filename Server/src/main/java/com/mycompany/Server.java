@@ -72,6 +72,7 @@ public class Server extends Thread {
                             catch(Exception e){
                                 e.printStackTrace();
                             }
+                            System.out.println("The service was consumed succesfully!");
                         }
                         else if(request.getMethod() == Method.GET_INSPECTOR_LIST){
                             try{

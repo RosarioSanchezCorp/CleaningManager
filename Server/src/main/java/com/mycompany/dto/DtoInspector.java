@@ -26,6 +26,10 @@ public class DtoInspector implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
+    public DtoInspector() {
+       
+    }
+
     public Long getId() {
         return id;
     }

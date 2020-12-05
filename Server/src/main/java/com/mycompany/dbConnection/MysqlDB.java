@@ -15,10 +15,10 @@ import java.sql.DriverManager;
 public class MysqlDB extends GenericDB {
     
     protected Connection connection;
-    private final String driverJDBC = "com.mysql.jdbc.Driver";
-    private final String urlDB = "jdbc:mysql://localhost:3306/test?useSSL=false";
-    private final String user = "root";
-    private final String password = "";
+    private final String driverJDBC = "com.mysql.cj.jdbc.Driver";
+    private final String urlDB = "jdbc:mysql://10.0.0.6:3306/dbcm?useSSL=false";
+    private final String user = "alex";
+    private final String password = "Rosadriel123@";
     
     @Override
     public void connect() {

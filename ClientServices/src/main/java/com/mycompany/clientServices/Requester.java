@@ -25,6 +25,19 @@ public class Requester <O> extends Thread{
     
     private O object;
     private List<O> objectList;
+    private static Requester requester;
+    
+    
+    //APPLYING THE SINGLETON PATTERN
+    private Requester(){}
+    public static Requester getRequester(){
+        
+        if(requester == null){
+            requester = new Requester();
+        }  
+        return requester;
+    }
+    
     
     @Override
     public void run(){
@@ -100,7 +113,7 @@ public class Requester <O> extends Thread{
         
         //THIST PART IS JUST TO GIVE A LITTLE BIT OF TIME TO THE SERVER TO SEND THE OBJECT
         try {
-            Thread.sleep(500);
+            Thread.sleep(2000);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
@@ -136,7 +149,7 @@ public class Requester <O> extends Thread{
         
         //THIST PART IS JUST TO GIVE A LITTLE BIT OF TIME TO THE SERVER TO SEND THE OBJECT
         try {
-            Thread.sleep(500);
+            Thread.sleep(2000);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }

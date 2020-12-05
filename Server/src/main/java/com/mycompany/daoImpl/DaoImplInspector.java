@@ -6,7 +6,12 @@
 package com.mycompany.daoImpl;
 
 import com.mycompany.dao.DaoInspector;
+import com.mycompany.dbConnection.FactoryDB;
+import com.mycompany.dbConnection.GenericDB;
+import com.mycompany.dbConnection.TypeDB;
 import com.mycompany.dto.DtoInspector;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,15 +21,8 @@ import java.util.List;
  */
 public class DaoImplInspector implements DaoInspector{
     
-    private List<DtoInspector> inspectorDB = new ArrayList<>();
-    
-    //THIS IS JUST FOR TESTING
-    public DaoImplInspector(){
-        DtoInspector inspector1 = new DtoInspector("Carlos", "Rosario", "8297842714");inspector1.setId(1L);
-        DtoInspector inspector2 = new DtoInspector("Adriel", "Sanchez", "8095612312");inspector2.setId(2L);
-        this.inspectorDB.add(inspector1);
-        this.inspectorDB.add(inspector2);
-    }
+    private GenericDB db = FactoryDB.getDataBase(TypeDB.MYSQL);
+    private List<DtoInspector> inspectorList = new ArrayList<>();
     
     @Override
     public void create(DtoInspector entity) {
@@ -48,7 +46,30 @@ public class DaoImplInspector implements DaoInspector{
 
     @Override
     public List<DtoInspector> findAll() {
-        return inspectorDB;
+        this.inspectorList.clear();
+        try{
+            db.connect();
+            PreparedStatement pst = db.getConnection().prepareStatement("SELECT * FROM TEST_INSPECTOR");
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()){
+                DtoInspector i = new DtoInspector();
+                i.setId(rs.getLong("id_inspector"));
+                i.setName(rs.getString("name"));
+                i.setLastName(rs.getString("lastname"));
+                i.setPhoneNumber(rs.getString("phone_number"));
+                inspectorList.add(i);
+            }
+            rs.close();
+            pst.close();       
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally{
+            db.close();
+            return inspectorList;
+        }
+        
     }
     
 }
