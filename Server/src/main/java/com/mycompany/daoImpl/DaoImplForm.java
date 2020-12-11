@@ -72,6 +72,7 @@ public class DaoImplForm implements DaoForm {
             db.connect();
             PreparedStatement pst = db.getConnection().prepareStatement("SELECT * FROM TEST_FORM ORDER BY ID_FORM DESC LIMIT 1");
             ResultSet rs = pst.executeQuery();
+            rs.next();
             dtoForm.setId(rs.getLong("id_form"));
             dtoForm.setIdInspector(rs.getLong("id_inspector"));
             dtoForm.setIdTruck(rs.getLong("id_foodtruck"));

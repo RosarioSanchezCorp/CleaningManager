@@ -8,6 +8,7 @@ import com.mycompany.entities.Inspector;
 import com.mycompany.enums.Method;
 import com.mycompany.enums.Service;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -60,7 +61,18 @@ public class App
             }
         }
         
-        
+        applianceList.get(0).setCleaningStatus(true);
+        applianceList.get(1).setCleaningStatus(false);
+        applianceList.get(2).setCleaningStatus(true);
+        applianceList.get(3).setCleaningStatus(true);
+        applianceList.get(4).setCleaningStatus(true);
+        applianceList.get(5).setCleaningStatus(true);
+        applianceList.get(6).setCleaningStatus(true);
+        Timestamp inspectionTime = new Timestamp(System.currentTimeMillis());
+        Boolean cleaningStatus = false;
+        String description = "The stove was derty";
+        Form form = new Form(inspectorList.get(0), foodTruckList.get(0), inspectionTime, applianceList, cleaningStatus, description);
+        requester.sendObject(Service.INSPECTOR, Method.CREATE_FORM, form);
         
     }
 }

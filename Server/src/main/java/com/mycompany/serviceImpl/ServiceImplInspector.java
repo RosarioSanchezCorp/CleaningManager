@@ -41,8 +41,9 @@ public class ServiceImplInspector implements ServiceInspector  {
     public void createForm(Form form) {
         DtoForm dtoForm = new DtoForm(form.getInspector().getId(), form.getFoodTruck().getId(), form.getInspectionTime(), form.getCleaningStatus(), form.getDescription());
         daoForm.create(dtoForm);
+        Long lastId = daoForm.findLast().getId();
         for(Appliance appliance: form.getApplianceList()){
-            DtoFormAppliance dtoFormAppliance = new DtoFormAppliance(daoForm.findLast().getId(), appliance.getId(), appliance.getCleaningStatus());
+            DtoFormAppliance dtoFormAppliance = new DtoFormAppliance(lastId, appliance.getId(), appliance.getCleaningStatus());
             daoFormAppliance.create(dtoFormAppliance);           
         }
     }
