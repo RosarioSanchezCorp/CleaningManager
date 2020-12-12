@@ -12,6 +12,7 @@ package com.mycompany.enums;
 public enum Method {
     
     GET_REGISTRY_LIST,
+    GET_LAST_REGISTRY,
     CREATE_FORM,
     GET_APPLIANCE_LIST,
     GET_INSPECTOR_LIST,

@@ -24,5 +24,10 @@ public class ServiceImplQAnalyst implements ServiceQAnalyst{
     public List<Registry> getRegistryList() {
         return daoFormAppliance.findAllRegistries();
     }
+
+    @Override
+    public Registry getLastRegistry() {
+        return daoFormAppliance.findLast();
+    }
     
 }

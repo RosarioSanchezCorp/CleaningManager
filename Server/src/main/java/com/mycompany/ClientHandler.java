@@ -56,6 +56,17 @@ public class ClientHandler extends Thread {
                             e.printStackTrace();
                         }
                     }
+                    else if(request.getMethod() == Method.GET_LAST_REGISTRY){
+                        try{
+                            Response response = new Response(serviceQAnalyst.getLastRegistry(), ResponseType.OBJECT);
+                            this.out.writeObject(response);
+                            this.out.close();
+                            this.s.close();
+                        }
+                        catch(Exception e){
+                            e.printStackTrace();
+                        }
+                    }
                     break;
 
                 case INSPECTOR:

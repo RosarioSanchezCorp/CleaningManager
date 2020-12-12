@@ -3,18 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.service;
-
-import com.mycompany.supports.Registry;
-import java.util.List;
+package com.mycompany.controllers;
 
 /**
  *
  * @author alex_rosario
  */
-public interface ServiceQAnalyst {
-      
-    public List<Registry> getRegistryList();
-    public Registry getLastRegistry();
+public class PrincipalCIController {
+    
+    
     
 }

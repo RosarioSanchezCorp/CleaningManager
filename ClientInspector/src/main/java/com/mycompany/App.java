@@ -9,12 +9,17 @@ import com.mycompany.enums.Method;
 import com.mycompany.enums.Service;
 import java.sql.Timestamp;
 import java.util.List;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class App 
-{
-    public static void main( String[] args )
-    {
-        Requester requester = new Requester();
+public class App extends Application {
+    public static void main( String[] args ){
+        
+        
+        /*Requester requester = new Requester();
         
         List<Appliance> applianceList = requester.getObjectList(Service.INSPECTOR, Method.GET_APPLIANCE_LIST);
         for(Appliance a: applianceList){
@@ -46,7 +51,19 @@ public class App
         Boolean cleaningStatus = false;
         String description = "The oven was not very clean";
         Form form = new Form(inspectorList.get(0), foodTruckList.get(0), inspectionTime, applianceList, cleaningStatus, description);
-        requester.sendObject(Service.INSPECTOR, Method.CREATE_FORM, form);
+        requester.sendObject(Service.INSPECTOR, Method.CREATE_FORM, form);*/
+        launch(args);
         
     }
+    
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/FXMLprincipalCI.fxml"));
+        Scene scene = new Scene(root,400,500);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Inpector Form");
+        primaryStage.show();
+    }
+
+    
 }

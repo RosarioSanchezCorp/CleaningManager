@@ -16,4 +16,5 @@ import java.util.List;
 public interface DaoFormAppliance extends GenericDao<DtoFormAppliance,Long>{
     
     public List<Registry> findAllRegistries();
+    public Registry findLast();
 }

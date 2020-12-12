@@ -99,5 +99,38 @@ public class DaoImplFormAppliance implements DaoFormAppliance {
             return registryList;
         }
     }
+
+    @Override
+    public Registry findLast() {
+        Registry r = new Registry();
+        try{
+            db.connect();
+            PreparedStatement pst = db.getConnection().prepareStatement("SELECT TEST_FORM.ID_FORM, TEST_INSPECTOR.NAME AS INSPECTOR, TEST_INSPECTOR.PHONE_NUMBER "
+                    + "AS INSPECTOR_PHONE_NUMBER,TEST_FORM.INSPECTION_TIME,TEST_FORM.ID_FOODTRUCK, TEST_FORM.CLEANING_STATUS, TEST_OPERATOR.NAME AS OPERATOR, "
+                    + "TEST_OPERATOR.PHONE_NUMBER AS OPERATOR_PHONE_NUMBER,TEST_FORM.DESCRIPTION FROM TEST_FORM INNER JOIN TEST_INSPECTOR ON "
+                    + "TEST_INSPECTOR.ID_INSPECTOR = TEST_FORM.ID_INSPECTOR INNER JOIN TEST_OPERATOR ON TEST_OPERATOR.ID_FOODTRUCK = TEST_FORM.ID_FOODTRUCK "
+                    + "ORDER BY ID_FORM DESC LIMIT 1;");
+            ResultSet rs = pst.executeQuery();
+            rs.next();
+            r.setId(rs.getLong("id_form"));
+            r.setInspectorName(rs.getString("inspector"));
+            r.setInspectorPhoneNumber(rs.getString("inspector_phone_number"));
+            r.setInspectionTime(rs.getTimestamp("inspection_time"));
+            r.setIdFoodTruck(rs.getLong("id_foodtruck"));
+            r.setCleaningStatus(rs.getBoolean("cleaning_status"));
+            r.setOperatorName(rs.getString("operator"));
+            r.setOperatorPhoneNumber(rs.getString("operator_phone_number"));
+            r.setDescription(rs.getString("description"));
+            rs.close();
+            pst.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally{
+            db.close();
+            return r;
+        }
+    }
     
 }

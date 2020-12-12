@@ -66,6 +66,29 @@ public class Requester<O>{
         }
     }
     
+    public O getObject(Service service, Method method){
+        
+        try{
+            Socket s = new Socket(ip, 3333); 
+            ObjectOutputStream out = new ObjectOutputStream(s.getOutputStream());
+            ObjectInputStream in = new ObjectInputStream(s.getInputStream());
+            Request request = new Request(service, method);
+            out.writeObject(request);
+            Response response = (Response) in.readObject();
+            object = (O) response.getObject();
+            in.close();
+            out.close();
+            s.close();
+            
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally{
+            return object;
+        }
+    }
+    
     public List<O> getObjectList(Service service, Method method){
         
         try{
