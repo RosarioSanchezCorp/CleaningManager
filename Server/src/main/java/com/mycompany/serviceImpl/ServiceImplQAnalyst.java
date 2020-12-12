@@ -8,7 +8,7 @@ package com.mycompany.serviceImpl;
 import com.mycompany.dao.ApplicationContext;
 import com.mycompany.dao.DaoEnum;
 import com.mycompany.dao.DaoFormAppliance;
-import com.mycompany.entities.Registry;
+import com.mycompany.supports.Registry;
 import com.mycompany.service.ServiceQAnalyst;
 import java.util.List;
 

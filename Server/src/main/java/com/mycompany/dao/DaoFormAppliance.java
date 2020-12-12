@@ -6,7 +6,7 @@
 package com.mycompany.dao;
 
 import com.mycompany.dto.DtoFormAppliance;
-import com.mycompany.entities.Registry;
+import com.mycompany.supports.Registry;
 import java.util.List;
 
 /**

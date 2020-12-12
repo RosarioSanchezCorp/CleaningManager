@@ -6,20 +6,17 @@
 package com.mycompany;
 
 import com.mycompany.entities.Form;
-import com.mycompany.entities.Request;
-import com.mycompany.entities.Response;
+import com.mycompany.supports.Request;
+import com.mycompany.supports.Response;
 import com.mycompany.enums.Method;
 import com.mycompany.enums.ResponseType;
 import com.mycompany.service.ServiceInspector;
 import com.mycompany.service.ServiceQAnalyst;
 import com.mycompany.serviceImpl.ServiceImplInspector;
 import com.mycompany.serviceImpl.ServiceImplQAnalyst;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -84,7 +81,6 @@ public class ClientHandler extends Thread {
                         catch(Exception e){
                             e.printStackTrace();
                         }
-                        System.out.println("The service was consumed succesfully!");
                     }
                     else if(request.getMethod() == Method.GET_INSPECTOR_LIST){
                         try{

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.entities;
+package com.mycompany.supports;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
@@ -17,14 +17,14 @@ public class Registry implements Serializable {
     private Long id;
     private String inspectorName;
     private String inspectorPhoneNumber;
-    private Date inspectionTime;
+    private Timestamp inspectionTime;
     private Long idFoodTruck;
     private boolean cleaningStatus;
     private String operatorName;
     private String operatorPhoneNumber;
     private String description;
 
-    public Registry(Long id, String inspectorName, String inspectorPhoneNumber, Date inspectionTime, Long idFoodTruck, boolean cleaningStatus, String operatorName, String operatorPhoneNumber, String description) {
+    public Registry(Long id, String inspectorName, String inspectorPhoneNumber, Timestamp inspectionTime, Long idFoodTruck, boolean cleaningStatus, String operatorName, String operatorPhoneNumber, String description) {
         this.id = id;
         this.inspectorName = inspectorName;
         this.inspectorPhoneNumber = inspectorPhoneNumber;
@@ -34,6 +34,10 @@ public class Registry implements Serializable {
         this.operatorName = operatorName;
         this.operatorPhoneNumber = operatorPhoneNumber;
         this.description = description;
+    }
+
+    public Registry() {
+        
     }
 
     public Long getId() {
@@ -60,11 +64,11 @@ public class Registry implements Serializable {
         this.inspectorPhoneNumber = inspectorPhoneNumber;
     }
 
-    public Date getInspectionTime() {
+    public Timestamp getInspectionTime() {
         return inspectionTime;
     }
 
-    public void setInspectionTime(Date inspectionTime) {
+    public void setInspectionTime(Timestamp inspectionTime) {
         this.inspectionTime = inspectionTime;
     }
 
@@ -76,7 +80,7 @@ public class Registry implements Serializable {
         this.idFoodTruck = idFoodTruck;
     }
 
-    public boolean isCleaningStatus() {
+    public boolean getCleaningStatus() {
         return cleaningStatus;
     }
 

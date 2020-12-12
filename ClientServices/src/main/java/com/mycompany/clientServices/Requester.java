@@ -5,8 +5,8 @@
  */
 package com.mycompany.clientServices;
 
-import com.mycompany.entities.Request;
-import com.mycompany.entities.Response;
+import com.mycompany.supports.Request;
+import com.mycompany.supports.Response;
 import com.mycompany.enums.Method;
 import com.mycompany.enums.Service;
 import java.io.ObjectInputStream;
