@@ -29,6 +29,10 @@ public class Response <O> implements Serializable {
         this.objectList = objectList;
         this.type = type;
     }
+    
+    public Response(ResponseType type){
+        this.type = type;
+    }
 
     public O getObject() {
         return object;

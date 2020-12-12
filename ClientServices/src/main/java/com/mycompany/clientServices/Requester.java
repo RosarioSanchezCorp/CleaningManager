@@ -5,156 +5,87 @@
  */
 package com.mycompany.clientServices;
 
-import com.mycompany.entities.Response;
 import com.mycompany.entities.Request;
+import com.mycompany.entities.Response;
 import com.mycompany.enums.Method;
 import com.mycompany.enums.Service;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.InetAddress;
-import java.net.ServerSocket;
 import java.net.Socket;
-
 import java.util.List;
 
 /**
  *
  * @author alex_rosario
  */
-public class Requester <O> extends Thread{
+public class Requester<O>{
     
     private O object;
     private List<O> objectList;
-    private static Requester requester;
+    private final String ip = "10.0.0.6";
     
     
-    //APPLYING THE SINGLETON PATTERN
-    private Requester(){}
-    public static Requester getRequester(){
+    public void sendObject(Service service, Method method, O object){
         
-        if(requester == null){
-            requester = new Requester();
-        }  
-        return requester;
-    }
-    
-    
-    @Override
-    public void run(){
         try{
-            System.out.println("The client is runnig");
-            ServerSocket server = new ServerSocket(44447);
-            while(true){
-                Socket socket = server.accept();
-                ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
-                Response response = (Response) in.readObject();
-                
-                switch(response.getType()){
-                    case OBJECT:
-                        this.object = (O) response.getObject();
-                        break;
-                    case LIST:
-                        this.objectList = response.getObjectList();
-                        break;
-                }
-                in.close();
-                socket.close();
-            }
-            
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-    
-    public <O> void sendObject(Service service, Method method, O object){
-        
-        Request request = new Request(service, method, object);
-        try {
-            
-            Socket socket = new Socket("10.0.0.6" , 44444);
-            ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+            Socket s = new Socket(ip, 3333); 
+            ObjectOutputStream out = new ObjectOutputStream(s.getOutputStream());
+            ObjectInputStream in = new ObjectInputStream(s.getInputStream());
+            Request request = new Request(service, method, object);
             out.writeObject(request);
+            Response response = (Response) in.readObject();
+            in.close();
             out.close();
-            socket.close();
-            System.out.println("The object was sent");
-                
+            s.close();    
         }
-        catch (Exception ex) {
-            System.out.println("The object was not sent");
-        }       
+        catch(Exception e){
+            e.printStackTrace();
+        }     
     }
     
     public O getObject(Service service, Method method, Long id){
         
-        InetAddress inetAddress = null;
-        
         try{
-            inetAddress = InetAddress. getLocalHost();
+            Socket s = new Socket(ip, 3333); 
+            ObjectOutputStream out = new ObjectOutputStream(s.getOutputStream());
+            ObjectInputStream in = new ObjectInputStream(s.getInputStream());
+            Request request = new Request(service, method, id);
+            out.writeObject(request);
+            Response response = (Response) in.readObject();
+            object = (O) response.getObject();
+            in.close();
+            out.close();
+            s.close();
+            
         }
         catch(Exception e){
-            
+            e.printStackTrace();
         }
-        
-        Request request = new Request(service, method, id, inetAddress.getHostAddress());
-        
-        try {
-            
-            Socket socket = new Socket("10.0.0.6" , 44444);
-            ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-            out.writeObject(request);
-            out.close();
-            socket.close();
-            System.out.println("The object was sent");
-                
+        finally{
+            return object;
         }
-        catch (Exception ex) {
-            System.out.println("The object was not sent");
-        }
-        
-        //THIST PART IS JUST TO GIVE A LITTLE BIT OF TIME TO THE SERVER TO SEND THE OBJECT
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
-        }
-        
-        return this.object;
     }
     
     public List<O> getObjectList(Service service, Method method){
         
-        InetAddress inetAddress = null;
-        
         try{
-            inetAddress = InetAddress. getLocalHost();
+            Socket s = new Socket(ip, 3333); 
+            ObjectOutputStream out = new ObjectOutputStream(s.getOutputStream());
+            ObjectInputStream in = new ObjectInputStream(s.getInputStream());
+            Request request = new Request(service, method);
+            out.writeObject(request);
+            Response response = (Response) in.readObject();
+            objectList = response.getObjectList();
+            in.close();
+            out.close();
+            s.close();
         }
         catch(Exception e){
-            
+            e.printStackTrace();
         }
         
-        Request request = new Request(service, method, inetAddress.getHostAddress());
-        try {
-            
-            Socket socket = new Socket("10.0.0.6" , 44444);
-            ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-            out.writeObject(request);
-            out.close();
-            socket.close();
-            System.out.println("The object was sent");
-                
-        }
-        catch (Exception ex) {
-            System.out.println("The object was not sent");
-        }
-        
-        //THIST PART IS JUST TO GIVE A LITTLE BIT OF TIME TO THE SERVER TO SEND THE OBJECT
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
-        }
-        
-        return this.objectList;
+        finally{
+            return objectList;
+        }    
     }
-    
 }

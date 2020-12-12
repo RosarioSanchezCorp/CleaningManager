@@ -12,5 +12,6 @@ package com.mycompany.enums;
 public enum ResponseType {
     
     OBJECT,
-    LIST;
+    LIST,
+    CONFIRMATION;
 }

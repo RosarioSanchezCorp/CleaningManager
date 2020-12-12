@@ -18,7 +18,6 @@ public class Request <O> implements Serializable{
     private static final long serialVersionUID = 1L;
     private Service service;
     private Method method;
-    private String ip;
     private Long id;
     private O object;
 
@@ -28,17 +27,15 @@ public class Request <O> implements Serializable{
         this.object = object;
     }
 
-    public Request(Service service, Method method, Long id, String ip) {
+    public Request(Service service, Method method, Long id) {
         this.service = service;
         this.method = method;
-        this.ip = ip;
         this.id = id;
     }
 
-    public Request(Service service, Method method, String ip) {
+    public Request(Service service, Method method) {
         this.service = service;
         this.method = method;
-        this.ip = ip;
     }
 
     public Service getService() {
@@ -47,10 +44,6 @@ public class Request <O> implements Serializable{
 
     public Method getMethod() {
         return method;
-    }
-
-    public String getIp() {
-        return ip;
     }
 
     public Long getId() {
