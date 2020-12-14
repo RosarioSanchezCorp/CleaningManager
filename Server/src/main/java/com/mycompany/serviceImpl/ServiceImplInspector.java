@@ -84,6 +84,31 @@ public class ServiceImplInspector implements ServiceInspector  {
         }
         return foodTruckList;
     }
+
+    @Override
+    public Inspector getInspector(Long id) {
+        DtoInspector dto = daoInspector.findById(id);
+        Inspector inspector = new Inspector();
+        inspector.setId(dto.getId());
+        inspector.setName(dto.getName());
+        inspector.setLastName(dto.getLastName());
+        inspector.setPhoneNumber(dto.getPhoneNumber());
+        List<FoodTruck> truckList = new ArrayList<>();
+        for(DtoFoodTruck dft: daoFoodTruck.findAllFrom(dto.getId())){
+            FoodTruck ft = new FoodTruck(dft.getId());
+            truckList.add(ft);
+        }
+        inspector.setTruckList(truckList);
+        return inspector;  
+    }
+
+    @Override
+    public FoodTruck getFoodtruck(Long id) {
+        DtoFoodTruck dto = daoFoodTruck.findById(id);   
+        FoodTruck foodtruck = new FoodTruck();
+        foodtruck.setId(dto.getId());
+        return foodtruck;
+    }
     
     
     

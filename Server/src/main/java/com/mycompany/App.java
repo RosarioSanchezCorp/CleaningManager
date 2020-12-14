@@ -1,5 +1,6 @@
 package com.mycompany;
 
+import com.mycompany.serviceImpl.ServiceImplInspector;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
@@ -8,8 +9,7 @@ import java.net.Socket;
 public class App 
 {
     public static void main( String[] args ){
-//        Server server = new Server();
-//        server.start();
+        
         try {
             ServerSocket ss = new ServerSocket(3333);
             System.out.println("The server is running");

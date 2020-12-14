@@ -21,5 +21,7 @@ public interface ServiceInspector {
     public List<Appliance> getApplianceList();
     public List<Inspector> getInspectorList();
     public List<FoodTruck> getFoodTruckList();
+    public Inspector getInspector(Long id);
+    public FoodTruck getFoodtruck(Long id);
     
 }

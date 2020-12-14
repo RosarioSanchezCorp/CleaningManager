@@ -42,7 +42,24 @@ public class DaoImplFoodTruck implements DaoFoodTruck{
 
     @Override
     public DtoFoodTruck findById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DtoFoodTruck dtoFoodtruck = new DtoFoodTruck();
+        try{
+            db.connect();
+            PreparedStatement pst = db.getConnection().prepareStatement("SELECT * FROM TEST_FOODTRUCK WHERE ID_FOODTRUCK = ?");
+            pst.setLong(1, id);
+            ResultSet rs = pst.executeQuery();
+            rs.next();
+            dtoFoodtruck.setId(rs.getLong("id_foodtruck"));
+            rs.close();
+            pst.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally{
+            db.close();
+            return dtoFoodtruck;
+        }
     }
 
     @Override

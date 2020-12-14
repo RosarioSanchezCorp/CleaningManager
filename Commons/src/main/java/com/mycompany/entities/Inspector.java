@@ -38,8 +38,9 @@ public class Inspector implements Serializable{
         this.truckList = truckList;
     }
     
-    
-    
+    public Inspector(){
+        
+    }
     
     //getters and setters
     public Long getId() {

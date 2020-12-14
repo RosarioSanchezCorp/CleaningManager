@@ -10,6 +10,7 @@ import com.mycompany.dbConnection.FactoryDB;
 import com.mycompany.dbConnection.GenericDB;
 import com.mycompany.dbConnection.TypeDB;
 import com.mycompany.dto.DtoInspector;
+import com.mycompany.entities.Inspector;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -41,7 +42,27 @@ public class DaoImplInspector implements DaoInspector{
 
     @Override
     public DtoInspector findById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        DtoInspector dtoInspector = new DtoInspector();
+        try{
+            db.connect();
+            PreparedStatement pst = db.getConnection().prepareStatement("SELECT * FROM TEST_INSPECTOR WHERE ID_INSPECTOR = ?");
+            pst.setLong(1, id);
+            ResultSet rs = pst.executeQuery();
+            rs.next();
+            dtoInspector.setId(rs.getLong("id_inspector"));
+            dtoInspector.setName(rs.getString("name"));
+            dtoInspector.setLastName(rs.getString("lastname"));
+            dtoInspector.setPhoneNumber(rs.getString("phone_number"));
+            rs.close();
+            pst.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally{
+            db.close();
+            return dtoInspector;
+        }
     }
 
     @Override

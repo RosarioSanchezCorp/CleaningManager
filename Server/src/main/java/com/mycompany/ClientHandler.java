@@ -45,75 +45,58 @@ public class ClientHandler extends Thread {
             Request request = (Request) in.readObject();
             switch(request.getService()){
                 case QANALYST:
-                    if(request.getMethod() == Method.GET_REGISTRY_LIST){
-                        try{ 
-                            Response response = new Response(serviceQAnalyst.getRegistryList(), ResponseType.LIST);
-                            this.out.writeObject(response);
-                            this.out.close();
-                            this.s.close();
-                        }
-                        catch(Exception e){
-                            e.printStackTrace();
-                        }
+                    if(request.getMethod() == Method.GET_REGISTRY_LIST){                       
+                        Response response = new Response(serviceQAnalyst.getRegistryList(), ResponseType.LIST);
+                        this.out.writeObject(response);
+                        this.out.close();
+                        this.s.close();                           
                     }
-                    else if(request.getMethod() == Method.GET_LAST_REGISTRY){
-                        try{
-                            Response response = new Response(serviceQAnalyst.getLastRegistry(), ResponseType.OBJECT);
-                            this.out.writeObject(response);
-                            this.out.close();
-                            this.s.close();
-                        }
-                        catch(Exception e){
-                            e.printStackTrace();
-                        }
+                    else if(request.getMethod() == Method.GET_LAST_REGISTRY){                      
+                        Response response = new Response(serviceQAnalyst.getLastRegistry(), ResponseType.OBJECT);
+                        this.out.writeObject(response);
+                        this.out.close();
+                        this.s.close();                                          
                     }
                     break;
 
                 case INSPECTOR:
-                    if(request.getMethod() == Method.CREATE_FORM){
-                        try{
-                            serviceInspector.createForm((Form) request.getObject());
-                            Response response = new Response(ResponseType.CONFIRMATION);
-                            this.out.writeObject(response);
-                            this.out.close();
-                            s.close();
-                        }
-                        catch(Exception e){
-                            e.printStackTrace();
-                        }
+                    if(request.getMethod() == Method.CREATE_FORM){                       
+                        serviceInspector.createForm((Form) request.getObject());
+                        Response response = new Response(ResponseType.CONFIRMATION);
+                        this.out.writeObject(response);
+                        this.out.close();
+                        s.close();    
+                        System.out.println("The service was consumed");
                     }
-                    else if(request.getMethod() == Method.GET_APPLIANCE_LIST){
-                        try{
-                            Response response = new Response(serviceInspector.getApplianceList(), ResponseType.LIST);
-                            this.out.writeObject(response);
-                            this.out.close();
-                            this.s.close();
-                        }
-                        catch(Exception e){
-                            e.printStackTrace();
-                        }
+                    else if(request.getMethod() == Method.GET_APPLIANCE_LIST){                       
+                        Response response = new Response(serviceInspector.getApplianceList(), ResponseType.LIST);
+                        this.out.writeObject(response);
+                        this.out.close();
+                        this.s.close();                                            
                     }
-                    else if(request.getMethod() == Method.GET_INSPECTOR_LIST){
-                        try{
-                            Response response = new Response(serviceInspector.getInspectorList(), ResponseType.LIST);
-                            this.out.writeObject(response);
-                            this.out.close();
-                            this.s.close();
-                        }
-                        catch(Exception e){
-                            e.printStackTrace();
-                        }
+                    else if(request.getMethod() == Method.GET_INSPECTOR_LIST){                      
+                        Response response = new Response(serviceInspector.getInspectorList(), ResponseType.LIST);
+                        this.out.writeObject(response);
+                        this.out.close();
+                        this.s.close();                                             
                     }
-                    else if(request.getMethod() == Method.GET_FOODTRUCK_LIST){
-                        try{                                
-                            Response response = new Response(serviceInspector.getFoodTruckList(), ResponseType.LIST);
-                            this.out.writeObject(response);
-                            this.out.close();
-                            this.s.close();
-                        }
-                        catch(Exception e){
-                            e.printStackTrace();
-                        }
+                    else if(request.getMethod() == Method.GET_FOODTRUCK_LIST){                                                    
+                        Response response = new Response(serviceInspector.getFoodTruckList(), ResponseType.LIST);
+                        this.out.writeObject(response);
+                        this.out.close();
+                        this.s.close();                                            
+                    }
+                    else if(request.getMethod() == Method.GET_INSPECTOR){                      
+                        Response response = new Response(serviceInspector.getInspector(request.getId()), ResponseType.OBJECT);
+                        this.out.writeObject(response);
+                        this.out.close();
+                        this.s.close();                                             
+                    }
+                    else if(request.getMethod() == Method.GET_FOODTRUCK){
+                        Response response = new Response(serviceInspector.getFoodtruck(request.getId()), ResponseType.OBJECT);
+                        this.out.writeObject(response);
+                        this.out.close();
+                        this.s.close(); 
                     }
                     break;
 
