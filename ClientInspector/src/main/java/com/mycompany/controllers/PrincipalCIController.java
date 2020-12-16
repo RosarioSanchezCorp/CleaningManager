@@ -134,7 +134,6 @@ public class PrincipalCIController implements Initializable {
         requester.sendObject(Service.INSPECTOR, Method.CREATE_FORM, form);   
     }
     
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         inspectorList = requester.getObjectList(Service.INSPECTOR, Method.GET_INSPECTOR_LIST);

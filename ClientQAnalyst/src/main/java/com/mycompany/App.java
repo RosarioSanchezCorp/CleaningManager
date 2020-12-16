@@ -6,10 +6,12 @@ import com.mycompany.enums.Service;
 import com.mycompany.supports.Registry;
 import java.util.List;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  * Hello world!
@@ -38,5 +40,12 @@ public class App extends Application{
         primaryStage.setScene(scene);
         primaryStage.setTitle("Quality Analyst");
         primaryStage.show();
+        
+        primaryStage.setOnCloseRequest(new EventHandler <WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                System.exit(0);
+            }
+        });
     }
 }
