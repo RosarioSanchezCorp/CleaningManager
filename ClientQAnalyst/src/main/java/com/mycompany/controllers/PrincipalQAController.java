@@ -5,20 +5,27 @@
  */
 package com.mycompany.controllers;
 
+import com.mycompany.FileHandler;
 import com.mycompany.clientServices.Requester;
 import com.mycompany.enums.Method;
 import com.mycompany.enums.Service;
 import com.mycompany.supports.Registry;
+import java.io.File;
 import java.net.URL;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -30,6 +37,8 @@ public class PrincipalQAController implements Initializable {
     
     private Requester requester = new Requester();
     private ObservableList<Registry> observableList = FXCollections.observableArrayList();
+    private List<Registry> registryList = new ArrayList<>();
+    private Stage stage;
     
     @FXML TableView<Registry> dataTable = new TableView<Registry>();
     @FXML private TableColumn<Registry, Long> id_form= new TableColumn<>("ID_FORM");
@@ -46,6 +55,20 @@ public class PrincipalQAController implements Initializable {
     private void loadTable(){
         observableList.addAll(requester.getObjectList(Service.QANALYST, Method.GET_REGISTRY_LIST));
         dataTable.getItems().addAll(observableList);
+    }
+    
+    @FXML private void export(ActionEvent event){
+        FileChooser fc = new FileChooser();
+        fc.setInitialFileName("Registries.csv");
+        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("csv", "*.csv"));
+        File file = fc.showSaveDialog(stage);
+        System.out.println(file.getAbsolutePath());
+        this.registryList = requester.getObjectList(Service.QANALYST, Method.GET_REGISTRY_LIST);
+        FileHandler.saveCSV(file.getAbsolutePath(), this.registryList);      
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
     
     @Override

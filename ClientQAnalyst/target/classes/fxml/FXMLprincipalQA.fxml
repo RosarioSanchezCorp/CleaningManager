@@ -21,6 +21,6 @@
             <TableColumn fx:id="description" prefWidth="396.0" text="DESCRIPTION" />
         </columns>
       </TableView>
-      <Button layoutX="50.0" layoutY="37.0" mnemonicParsing="false" text="Export to CSV" />
+      <Button layoutX="50.0" layoutY="37.0" mnemonicParsing="false" onAction="#export" text="Export to CSV" />
    </children>
 </AnchorPane>

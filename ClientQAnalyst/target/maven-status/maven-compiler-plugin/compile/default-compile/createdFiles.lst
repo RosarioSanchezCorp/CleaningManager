@@ -1,2 +1,5 @@
+com/mycompany/App$1.class
 com/mycompany/App.class
+com/mycompany/FileHandler.class
+com/mycompany/controllers/PrincipalQAController$Render.class
 com/mycompany/controllers/PrincipalQAController.class

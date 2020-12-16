@@ -8,11 +8,11 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-<modules>
-    <module>ClientInspector</module>
-  <module>ClientQAnalyst</module>
-    <module>Commons</module>
-    <module>Server</module>
-    <module>ClientServices</module>
-</modules>
+    <modules>
+        <module>ClientInspector</module>
+        <module>ClientQAnalyst</module>
+        <module>Commons</module>
+        <module>Server</module>
+        <module>ClientServices</module>
+    </modules>
 </project>
