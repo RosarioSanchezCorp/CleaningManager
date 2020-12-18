@@ -93,22 +93,14 @@ public class PrincipalQAController implements Initializable {
 
         @Override
         public void run() {
-            while(true){
-                try{
-                    updateTable();
-                    Thread.sleep(10000);
-                }
-                catch(Exception e){
-                    e.printStackTrace();
-                }
+            while(true){             
+                updateTable2();      
             }
         }
         
-        public void updateTable(){
-            observableList.clear();
-            observableList.addAll(requester.getObjectList(Service.QANALYST, Method.GET_REGISTRY_LIST));
-            dataTable.getItems().clear();
-            dataTable.getItems().addAll(observableList);
+        public void updateTable2(){
+            Registry r = (Registry) requester.getObject(Service.QANALYST, Method.GET_LAST_REGISTRY);
+            dataTable.getItems().add(r);
         }
         
     }

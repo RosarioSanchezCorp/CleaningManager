@@ -27,6 +27,11 @@ public class ServiceImplQAnalyst implements ServiceQAnalyst{
 
     @Override
     public Registry getLastRegistry() {
+        int size = daoFormAppliance.findAllRegistries().size();
+        final int c = size;
+        while(c == daoFormAppliance.findAllRegistries().size()){
+            //WAITING FOR A FORM, WNHEN ANY INSPECTOR SEND A FORM, THIS CYCLE WILL BREAK THEN THE LAST REGISTRY WILL BE RETURNED
+        }  
         return daoFormAppliance.findLast();
     }
     
