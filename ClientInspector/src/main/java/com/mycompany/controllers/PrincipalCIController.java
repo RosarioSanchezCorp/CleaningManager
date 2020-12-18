@@ -12,6 +12,7 @@ import com.mycompany.entities.Form;
 import com.mycompany.entities.Inspector;
 import com.mycompany.enums.Method;
 import com.mycompany.enums.Service;
+import com.mycompany.supports.ApplianceRegistry;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -22,9 +23,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javax.swing.JOptionPane;
 
 /**
@@ -41,17 +46,15 @@ public class PrincipalCIController implements Initializable {
     
     @FXML private ChoiceBox<Long> inspectors = new ChoiceBox();
     @FXML private ChoiceBox<Long> foodtrucks = new ChoiceBox();
-    @FXML private CheckBox cbAppliance1 = new CheckBox();
-    @FXML private CheckBox cbAppliance2 = new CheckBox();
-    @FXML private CheckBox cbAppliance3 = new CheckBox();
-    @FXML private CheckBox cbAppliance4 = new CheckBox();
-    @FXML private CheckBox cbAppliance5 = new CheckBox();
-    @FXML private CheckBox cbAppliance6 = new CheckBox();
-    @FXML private CheckBox cbAppliance7 = new CheckBox();
     @FXML private TextArea taDescription = new TextArea();
+    
+    @FXML private TableView<ApplianceRegistry> applianceTable = new TableView<ApplianceRegistry>();
+    @FXML private TableColumn<ApplianceRegistry, String> appliance_name = new TableColumn<>("APPLIANCES");
+    @FXML private TableColumn<ApplianceRegistry, CheckBox> appliance_cb = new TableColumn<>("CLEAN");
     
     ObservableList obInspectorList = FXCollections.observableArrayList();
     ObservableList obFoodtruckList = FXCollections.observableArrayList();
+    ObservableList<ApplianceRegistry> obApplianceList = FXCollections.observableArrayList();
     
     List<Inspector> inspectorList = new ArrayList<>();
     List<FoodTruck> foodtruckList = new ArrayList<>();
@@ -62,6 +65,7 @@ public class PrincipalCIController implements Initializable {
         for(Inspector i: inspectorList){
             obInspectorList.add(i.getId());
         }
+        inspectors.getItems().clear();
         inspectors.getItems().addAll(obInspectorList); 
     }
     
@@ -70,7 +74,25 @@ public class PrincipalCIController implements Initializable {
         for(FoodTruck f: foodtruckList){
             obFoodtruckList.add(f.getId());
         }
+        foodtrucks.getItems().clear();
         foodtrucks.getItems().addAll(obFoodtruckList);
+    }
+    
+    private void loadAppliances(){
+        for(Appliance a: applianceList){
+            ApplianceRegistry ar = new ApplianceRegistry(a.getName());
+            obApplianceList.add(ar);
+        }
+        applianceTable.getItems().addAll(obApplianceList);
+    }
+    
+    private void clearAll(){
+        loadInspectors();
+        loadFoodtrucks();
+        for(ApplianceRegistry ar: obApplianceList){
+            ar.getCb().setSelected(false);
+        }
+        taDescription.setText("");
     }
     
     @FXML private void send(ActionEvent event){
@@ -79,59 +101,25 @@ public class PrincipalCIController implements Initializable {
         FoodTruck foodtruckSelected = (FoodTruck) requester.getObject(Service.INSPECTOR, Method.GET_FOODTRUCK, foodtrucks.getValue());
         
         boolean cleaningStatus = true;
-        if(cbAppliance1.isSelected()){
-            applianceList.get(0).setCleaningStatus(true);
-        }
-        else{
-            applianceList.get(0).setCleaningStatus(false);
-            cleaningStatus = false;
-        }
-        if(cbAppliance2.isSelected()){
-            applianceList.get(1).setCleaningStatus(true);
-        }
-        else{
-            applianceList.get(1).setCleaningStatus(false);
-            cleaningStatus = false;
-        }
-        if(cbAppliance3.isSelected()){
-            applianceList.get(2).setCleaningStatus(true);
-        }
-        else{
-            applianceList.get(2).setCleaningStatus(false);
-            cleaningStatus = false;
-        }
-        if(cbAppliance4.isSelected()){
-            applianceList.get(3).setCleaningStatus(true);
-        }
-        else{
-            applianceList.get(3).setCleaningStatus(false);
-            cleaningStatus = false;
-        }
-        if(cbAppliance5.isSelected()){
-            applianceList.get(4).setCleaningStatus(true);
-        }
-        else{
-            applianceList.get(4).setCleaningStatus(false);
-            cleaningStatus = false;
-        }
-        if(cbAppliance6.isSelected()){
-            applianceList.get(5).setCleaningStatus(true);
-        }
-        else{
-            applianceList.get(5).setCleaningStatus(false);
-            cleaningStatus = false;
-        }
-        if(cbAppliance7.isSelected()){
-            applianceList.get(6).setCleaningStatus(true);
-        }
-        else{
-            applianceList.get(6).setCleaningStatus(false);
-            cleaningStatus = false;
+        
+        for(int i = 0; i < applianceList.size(); i++){
+            if(obApplianceList.get(i).getCb().isSelected()){
+                applianceList.get(i).setCleaningStatus(true);
+            }
+            else{
+                applianceList.get(i).setCleaningStatus(true);
+                cleaningStatus = false;
+            }
         }
         String description = taDescription.getText();
         Timestamp inspectionTime = new Timestamp(System.currentTimeMillis());
         Form form = new Form(inspectorSelected, foodtruckSelected, inspectionTime, applianceList, cleaningStatus, description);
         requester.sendObject(Service.INSPECTOR, Method.CREATE_FORM, form);   
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("INFORMATION");
+        alert.setContentText("The form has been sent succesfully");
+        alert.show();
+        clearAll();  
     }
     
     @Override
@@ -139,8 +127,11 @@ public class PrincipalCIController implements Initializable {
         inspectorList = requester.getObjectList(Service.INSPECTOR, Method.GET_INSPECTOR_LIST);
         foodtruckList = requester.getObjectList(Service.INSPECTOR, Method.GET_FOODTRUCK_LIST);
         applianceList = requester.getObjectList(Service.INSPECTOR, Method.GET_APPLIANCE_LIST);
+        appliance_name.setCellValueFactory(new PropertyValueFactory<ApplianceRegistry, String>("name"));
+        appliance_cb.setCellValueFactory(new PropertyValueFactory<ApplianceRegistry, CheckBox>("cb"));
         loadInspectors();
         loadFoodtrucks();
+        loadAppliances();
     }    
     
 }

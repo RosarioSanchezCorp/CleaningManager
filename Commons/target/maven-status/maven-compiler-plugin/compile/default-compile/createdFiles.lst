@@ -3,6 +3,7 @@ com/mycompany/entities/Inspector.class
 com/mycompany/entities/Operator.class
 com/mycompany/enums/Service.class
 com/mycompany/enums/Method.class
+com/mycompany/supports/ApplianceRegistry.class
 com/mycompany/entities/FoodTruck.class
 com/mycompany/entities/Form.class
 com/mycompany/supports/Response.class
