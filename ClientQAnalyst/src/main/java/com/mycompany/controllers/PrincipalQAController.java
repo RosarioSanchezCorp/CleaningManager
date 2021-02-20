@@ -6,7 +6,7 @@
 package com.mycompany.controllers;
 
 import com.mycompany.FileHandler;
-import com.mycompany.clientServices.Requester;
+import com.mycompany.apiService.Requester;
 import com.mycompany.enums.Method;
 import com.mycompany.enums.Service;
 import com.mycompany.supports.Registry;

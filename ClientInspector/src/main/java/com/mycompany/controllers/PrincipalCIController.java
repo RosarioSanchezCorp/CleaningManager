@@ -5,7 +5,7 @@
  */
 package com.mycompany.controllers;
 
-import com.mycompany.clientServices.Requester;
+import com.mycompany.apiService.Requester;
 import com.mycompany.entities.Appliance;
 import com.mycompany.entities.FoodTruck;
 import com.mycompany.entities.Form;
@@ -30,7 +30,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
